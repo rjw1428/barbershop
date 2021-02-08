@@ -1,0 +1,16 @@
+.nav-button {
+  padding: .67em 24px;
+  margin: 0px;
+  cursor: pointer;
+  transition: .25s;
+  text-shadow: 1px 1px black;
+}
+
+.nav-button:hover {
+    background-color: var(--button-bg)
+}
+
+h1 {
+    font-weight: 100;
+    text-transform: uppercase;
+}

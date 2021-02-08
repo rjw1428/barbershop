@@ -1,0 +1,42 @@
+<div>
+  <div class="navbar">
+
+    <div style="display: flex; flex-basis: 40%; justify-content: flex-start;">
+      <app-nav-button>Our Team</app-nav-button>
+      <app-nav-button>Services</app-nav-button>
+      <app-nav-button>Gallery</app-nav-button>
+    </div>
+
+    <div style="flex-basis: 200px;">
+      <img src="../../assets/media/logo_lg.png" height="200px" width="200px">
+    </div>
+
+    <div style="display: flex; flex-basis: 40%; justify-content: flex-end;">
+      <app-nav-button>About</app-nav-button>
+      <app-nav-button>Hours</app-nav-button>
+      <app-nav-button>Map</app-nav-button>
+    </div>
+  </div>
+
+
+  <div class="frame">
+    <video [autoplay]="true" loop [muted]="true" playsinline class="header-content">
+      <source src="../../assets/media/vid1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+
+  <div class="header-content"
+    style="display: flex; justify-content: center; height: 100%; align-items: center; flex-direction: column;">
+    <div style="padding: 24px 48px; cursor: pointer;" class="book-button">
+      <h1>BOOK NOW</h1>
+    </div>
+    <h2 style="text-shadow: 1px 1px black;">1517 South Street Philadelphia, PA 19146</h2>
+    <h3 style="text-shadow: 1px 1px black;">(267) 930-3980</h3>
+    <div style="display: flex; width: 200px; justify-content: space-around; color: white;">
+      <i class="fab fa-instagram fa-3x" style="cursor: pointer;"></i>
+      <i class="fab fa-yelp fa-3x" style="cursor: pointer;"></i>
+      <i class="far fa-envelope fa-3x" style="cursor: pointer;"></i>
+    </div>
+  </div>
+</div>

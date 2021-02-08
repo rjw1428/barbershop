@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap');
+
+:root {
+    --button-bg: rgba(41, 114, 182, 0.6);
+}
+
+.test {
+  border: 1px solid red;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5, 
+p {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+

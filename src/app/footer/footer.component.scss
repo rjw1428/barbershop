@@ -1,0 +1,62 @@
+.footer-link {
+  cursor: pointer;
+  margin: 0 20px;
+  transition: .3s;
+}
+
+.footer-link:hover {
+  text-shadow: 1px 1px whitesmoke;
+}
+
+li:nth-of-type(1):hover~hr {
+  width: 50px;
+  margin-left: 17px;
+}
+
+li:nth-of-type(2):hover~hr {
+  width: 65px;
+  margin-left: 105px;
+}
+
+li:nth-of-type(3):hover~hr {
+  width: 60px;
+  margin-left: 207px;
+}
+
+li:nth-of-type(4):hover~hr {
+  width: 50px;
+  margin-left: 305px;
+}
+
+li:nth-of-type(5):hover~hr {
+  width: 53px;
+  margin-left: 395px;
+}
+
+hr {
+  height: .05rem;
+  width: 0%;
+  margin: 0;
+  background: white;
+  border: none;
+  transition: .3s ease-in-out;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.book-button {
+    background-color: rgb(41, 114, 182);
+    padding: 12px;
+    margin: 12px;
+    cursor: pointer;
+}
