@@ -1,23 +1,36 @@
 :host {
-    --color1: rgb(3, 12, 64);
-    --color2: #FFF;
+  --color1: rgb(3, 12, 64);
+  --color2: #FFF;
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .bg {
-    background: radial-gradient(4rem,
-    rgba(255,255,255,0) 80%, 
-    var(--color2) 80%,  var(--color2) 99%, 
-    rgba(255,255,255, 0) 
-    ) 0 0,
-    radial-gradient(4rem,
-    rgba(255,255,255,0) 80%, 
-    var(--color2) 80%,  var(--color2) 99%,  
-    rgba(255,255,255, 0) 
-    ) 4em 4em;
-  background-size: 8rem 8rem;
-  background-color:  var(--color1);
+  // background: radial-gradient(4rem,
+  // rgba(255,255,255,0) 80%, 
+  // var(--color2) 80%,  var(--color2) 99%, 
+  // rgba(255,255,255, 0) 
+  // ) 0 0,
+  // radial-gradient(4rem,
+  // rgba(255,255,255,0) 80%, 
+  // var(--color2) 80%,  var(--color2) 99%,  
+  // rgba(255,255,255, 0) 
+  // ) 4em 4em;
+  background-image:
+    repeating-linear-gradient(-30deg,
+    #C92228,
+    #C92228 2rem,
+    #fff 2rem,
+    #fff 4rem,
+    #3b5998 4rem,
+    #3b5998 6rem,
+    #fff 6rem,
+    #fff 8rem);
+  background-size: 100% 100%;
+}
+
+.title {
+  transform: skew(-10deg, 0);
 }

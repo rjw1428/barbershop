@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap');
+@import url(//fonts.googleapis.com/css2?family=Dekko&family=Montserrat:wght@100;400&display=swap);
+@import url(//fonts.googleapis.com/css?family=Patrick+Hand+SC|Bangers|Happy+Monkey);
 
 :root {
-    --button-bg: rgba(41, 114, 182, 0.6);
+  --button-bg: rgba(41, 114, 182, 0.6);
 }
 
 .test {
@@ -13,10 +14,20 @@ h1,
 h2,
 h3,
 h4,
-h5, 
+h5,
 p {
   font-family: 'Montserrat', sans-serif;
   color: white;
 }
 
 
+.title {
+  font-family: "Bangers";
+  margin: 10px 0 0 0;
+  text-shadow: -1px -1px rgb(41, 114, 182), 1px 1px rgb(15, 63, 107), 2px 2px rgb(15, 63, 107);
+  width: 100%;
+  text-align: center;
+  font-size: 64px;
+  color: #FFF;
+  letter-spacing: 2px;
+}

@@ -1,10 +1,11 @@
-<div
-  style="clip-path: polygon(0 43px, 45% 0, 100% 150px, 100% calc(100% - 50px), 36% 100%, 0 calc(100% - 50px)); background-color: rgb(41, 114, 182); margin: -150px 20px -30px 20px;">
-  <div style="padding-top: 20px; padding-bottom: 50px;">
-    <div style="display: flex; flex-direction: column; align-items: center;" class="test">
-      <h1 style="margin-right: 200px;">GALLERY</h1>
-      <div  style="display: flex;" class="test">
-        <div *ngFor="let img of images" style="width: 200px; height: 400px;" class="test"></div>
+<div class="outer">
+  <div class="inner">
+    <div style="padding-top: 20px; padding-bottom: 50px;">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <h1 class="title">GALLERY</h1>
+        <div style="display: flex;  align-self: flex-start; padding-left: 20px; margin-top: -140px;">
+          <div *ngFor="let img of images" class="item" style="background-image: url('{{img}}');"> </div>
+        </div>
       </div>
     </div>
   </div>

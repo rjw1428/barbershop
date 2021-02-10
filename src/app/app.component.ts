@@ -8,6 +8,6 @@ import { Observable } from 'rxjs/internal/Observable';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'interview';
+  title = 'Barbershop Denim';
   constructor(private service: ServiceService) { }
 }

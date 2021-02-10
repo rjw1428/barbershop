@@ -1,3 +1,55 @@
+// .bg {
+//   background-image: url("/assets/media/art_orig.jpg"),
+//     radial-gradient(#212121 20%, transparent 20%), radial-gradient(#FAFAFA 20%, transparent 20%);
+//   background-repeat: no-repeat, repeat;
+//   background-size: cover;
+//   background-position: center;
+//   background-blend-mode: normal;
+// }
+
+// .bg {
+//   background-image:
+//     url("/assets/media/art_orig.jpg"),
+//     radial-gradient(#212121 20%, transparent 20%),
+//     radial-gradient(#212121 20%, transparent 20%),
+//     radial-gradient(#212121 20%, transparent 20%),
+//     radial-gradient(#212121 20%, transparent 20%),
+//     radial-gradient(#212121 20%, transparent 20%),
+//     radial-gradient(#212121 20%, transparent 20%),
+//     radial-gradient(#212121 20%, transparent 20%),
+//     radial-gradient(#212121 20%, transparent 20%);
+//   background-color: #fff;
+//   background-size: cover, 48px 48px, 48px 48px, 48px 48px, 48px 48px, 48px 48px, 48px 48px, 48px 48px, 48px 48px;
+//   background-repeat: no-repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat;
+//   background-position: 0 0, 12px 12px, 24px 24px, 36px 36px, 36px 12px, 12px 36px, 0 24px, 24px 0;
+//   background-blend-mode: multiply;
+// }
+
 .bg {
-    background-color: maroon;
+  background-image: url("/assets/media/storefront.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: normal;
+}
+
+.frame {
+    background-color: rgba(0,0,0,.5);
+    padding: 24px;
+    margin-top: -24px;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0,0,0,.5);
+}
+
+.title {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+p {
+    font-weight: 100;
+    text-shadow: 1px 1px 1px black;
 }

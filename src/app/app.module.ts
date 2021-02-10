@@ -16,7 +16,8 @@ import { LocationComponent } from './location/location.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavButtonComponent } from './header/nav-button/nav-button.component';
 import { TeamMemberComponent } from './team/team-member/team-member.component';
-import { ProductComponent } from './products/product/product.component'
+import { ProductComponent } from './products/product/product.component';
+import { ContactComponent } from './contact/contact.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ProductComponent } from './products/product/product.component'
     FooterComponent,
     NavButtonComponent,
     TeamMemberComponent,
-    ProductComponent
+    ProductComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
