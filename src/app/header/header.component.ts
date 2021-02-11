@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor() { }
+  constructor(
+    private service: ServiceService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -42,6 +45,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onBook() {
-    window.location.href ="https://booksy.com/en-us/90270_barbershop-denim_barber-shop_134598_philadelphia"
+    this.service.book()
   }
 }

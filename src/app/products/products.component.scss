@@ -19,15 +19,15 @@ ul {
   // rgba(255,255,255, 0) 
   // ) 4em 4em;
   background-image:
-    repeating-linear-gradient(-30deg,
+    repeating-linear-gradient(-45deg,
     #C92228,
-    #C92228 2rem,
-    #fff 2rem,
+    #C92228 4rem,
     #fff 4rem,
-    #3b5998 4rem,
-    #3b5998 6rem,
-    #fff 6rem,
-    #fff 8rem);
+    #fff 8rem,
+    #3b5998 8rem,
+    #3b5998 12rem,
+    #fff 12rem,
+    #fff 16rem);
   background-size: 100% 100%;
 }
 

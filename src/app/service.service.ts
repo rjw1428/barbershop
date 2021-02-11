@@ -16,4 +16,8 @@ export class ServiceService {
   //   return this.http.get('https://api.publicapis.org/categories')
   // }
 
+  book() {
+    window.location.href ="https://booksy.com/en-us/90270_barbershop-denim_barber-shop_134598_philadelphia"
+  }
+
 }

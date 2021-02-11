@@ -2,6 +2,8 @@
   transform: skew(-10deg, 0);
   padding-bottom: 12px;
   margin-right: 400px;
+  position: relative;
+  z-index: 10;
 }
 
 .outer {
@@ -31,4 +33,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 6px 6px 6px black;
+  transition: all .25s;
+}
+
+.item:hover {
+  transform: scale(1.1);
 }
