@@ -7,30 +7,206 @@ ul {
   list-style-type: none;
 }
 
+
+.outer {
+  clip-path: polygon(13% 80px, 100% 0%, 100% 100%, 4% calc(100% - 145px));
+  margin-top: -145px;
+  margin-left: -12%;
+
+  height: calc(100% + 145px);
+
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background-color: black;
+}
+
+.inner {
+  clip-path: polygon(13% 80px, 100% 0%, 100% 100%, 4% calc(100% - 145px));
+  position: relative;
+  top: 5px;
+  height: calc(100% - 10px);
+  width: calc(100% - 10px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.content {
+  position: relative;
+  margin-top: 100px;
+  margin-right: 48px;
+  margin-bottom: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  background-color: rgba(0, 0, 0, .8);
+  backdrop-filter: blur(10px);
+}
+
 .bg {
-  // background: radial-gradient(4rem,
-  // rgba(255,255,255,0) 80%, 
-  // var(--color2) 80%,  var(--color2) 99%, 
-  // rgba(255,255,255, 0) 
-  // ) 0 0,
-  // radial-gradient(4rem,
-  // rgba(255,255,255,0) 80%, 
-  // var(--color2) 80%,  var(--color2) 99%,  
-  // rgba(255,255,255, 0) 
-  // ) 4em 4em;
-  background-image:
-    repeating-linear-gradient(-45deg,
-    #C92228,
-    #C92228 4rem,
-    #fff 4rem,
-    #fff 8rem,
-    #3b5998 8rem,
-    #3b5998 12rem,
-    #fff 12rem,
-    #fff 16rem);
-  background-size: 100% 100%;
+  $bgcolor: #E9F1DF;
+  $transparent: rgba(255, 255, 255, 0);
+
+  $color-5: #fff;
+  $color-4: rgb(17, 53, 112);
+  $color-3: rgb(17, 53, 112);
+  $color-2: rgb(17, 53, 112);
+  $color-1: #fff;
+
+  $size: 6em;
+  $big-size: $size*2;
+  $min: 0;
+  $max: $size*.17;
+
+  background:
+    linear-gradient(to right top,
+      $transparent $min,
+      $color-5 $min, $color-5 $max,
+      $transparent $max) $size 0,
+    linear-gradient(to left bottom,
+      $transparent $min,
+      $color-5 $min, $color-5 $max,
+      $transparent $max) $size 0,
+    linear-gradient(to right bottom,
+      $transparent $min,
+      $color-5 $min, $color-5 $max,
+      $transparent $max) $size 0,
+    linear-gradient(to left top,
+      $transparent $min,
+      $color-5 $min, $color-5 $max,
+      $transparent $max) $size 0,
+
+    linear-gradient(to right top,
+      $transparent $min,
+      $color-5 $min, $color-5 $max,
+      $transparent $max) 0 $size,
+    linear-gradient(to left bottom,
+      $transparent $min,
+      $color-5 $min, $color-5 $max,
+      $transparent $max) 0 $size,
+    linear-gradient(to right bottom,
+      $transparent $min,
+      $color-5 $min, $color-5 $max,
+      $transparent $max) 0 $size,
+    linear-gradient(to left top,
+      $transparent $min,
+      $color-5 $min, $color-5 $max,
+      $transparent $max) 0 $size,
+
+    linear-gradient(to right top,
+      $transparent $min,
+      $color-1 $min, $color-1 $max,
+      $color-2 $min*2, $color-2 $max*2,
+      $color-3 $min*3, $color-3 $max*3,
+      $color-4 $min*4, $color-4 $max*4,
+      $color-5 $min*5, $color-5 $max*5,
+      $transparent $max) 0 0,
+    linear-gradient(to right bottom,
+      $transparent $min,
+      $color-1 $min, $color-1 $max,
+      $color-2 $min*2, $color-2 $max*2,
+      $color-3 $min*3, $color-3 $max*3,
+      $color-4 $min*4, $color-4 $max*4,
+      $color-5 $min*5, $color-5 $max*5,
+      $transparent $max) 0 0,
+    linear-gradient(to left top,
+      $transparent $min,
+      $color-1 $min, $color-1 $max,
+      $color-2 $min*2, $color-2 $max*2,
+      $color-3 $min*3, $color-3 $max*3,
+      $color-4 $min*4, $color-4 $max*4,
+      $color-5 $min*5, $color-5 $max*5,
+      $transparent $max) 0 0,
+    linear-gradient(to left bottom,
+      $transparent $min,
+      $color-1 $min, $color-1 $max,
+      $color-2 $min*2, $color-2 $max*2,
+      $color-3 $min*3, $color-3 $max*3,
+      $color-4 $min*4, $color-4 $max*4,
+      $color-5 $min*5, $color-5 $max*5,
+      $transparent $max) 0 0,
+
+    linear-gradient(to right top,
+      $transparent $min,
+      $color-1 $min, $color-1 $max,
+      $color-2 $min*2, $color-2 $max*2,
+      $color-3 $min*3, $color-3 $max*3,
+      $color-4 $min*4, $color-4 $max*4,
+      $color-5 $min*5, $color-5 $max*5,
+      $transparent $max) $size $size,
+    linear-gradient(to right bottom,
+      $transparent $min,
+      $color-1 $min, $color-1 $max,
+      $color-2 $min*2, $color-2 $max*2,
+      $color-3 $min*3, $color-3 $max*3,
+      $color-4 $min*4, $color-4 $max*4,
+      $color-5 $min*5, $color-5 $max*5,
+      $transparent $max) $size $size,
+    linear-gradient(to left top,
+      $transparent $min,
+      $color-1 $min, $color-1 $max,
+      $color-2 $min*2, $color-2 $max*2,
+      $color-3 $min*3, $color-3 $max*3,
+      $color-4 $min*4, $color-4 $max*4,
+      $color-5 $min*5, $color-5 $max*5,
+      $transparent $max) $size $size,
+    linear-gradient(to left bottom,
+      $transparent $min,
+      $color-1 $min, $color-1 $max,
+      $color-2 $min*2, $color-2 $max*2,
+      $color-3 $min*3, $color-3 $max*3,
+      $color-4 $min*4, $color-4 $max*4,
+      $color-5 $min*5, $color-5 $max*5,
+      $transparent $max) $size $size;
+  background-size: $big-size $big-size;
+  background-color: $bgcolor;
+  background-repeat: repeat;
+  font: 16px 'Trebuchet MS', Verdana, sans-serif;
 }
 
 .title {
   transform: skew(-10deg, 0);
+}
+
+
+ul {
+  width: 80%;
+}
+
+@media screen and (max-width: 1400px) {
+  .content {
+    margin-right: 24px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  ul {
+    padding-inline-start: 0;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  ul {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  ul {
+    width: 97%;
+  }
+
+  .content {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 8%;
+    
+  }
+
+  .title {
+    font-size: 2.5em;
+  }
 }

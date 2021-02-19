@@ -32,16 +32,23 @@ p {
 }
 
 .inner {
-  background: rgb(41, 114, 182);
   clip-path: polygon(0 0, 88% 8%, 100% 100%, 0% 100%);
   left: 5px;
-  right: 5px;
   top: 5px;
-  bottom: 5px;
-  position: absolute;
-  overflow: hidden;
+  position: relative;
+  height: calc(100% - 10px);
+  width: calc(100% - 10px);
+  display: flex;
+  justify-content: center;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  padding-bottom: 1.5em;
+}
 
 .day-short {
   display: none;
@@ -51,13 +58,15 @@ p {
   display: block;
 }
 
+
+
 @media screen and (max-width: 1400px) {
   .inner {
-    clip-path: polygon(6% 8%, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(6% 10%, 100% 0%, 100% 100%, 0% 100%);
   }
 
   .outer {
-    clip-path: polygon(6% 8%, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(6% 10%, 100% 0%, 100% 100%, 0% 100%);
     margin-left: -4%;
   }
 
@@ -67,6 +76,7 @@ p {
 
   .title {
     text-align: center;
+    margin-top: 24px;
   }
 }
 
@@ -99,11 +109,11 @@ p {
 
 @media screen and (max-width: 600px) {
   .inner {
-    clip-path: polygon(6% 10%, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(6% 12%, 100% 0%, 100% 100%, 0% 100%);
   }
 
   .outer {
-    clip-path: polygon(6% 10%, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(6% 12%, 100% 0%, 100% 100%, 0% 100%);
   }
 
   p {

@@ -1,8 +1,10 @@
-<div id="team" class="bg" style="clip-path: polygon(0 14%, 0 86%, 90% 81%, 100% 5%); margin-top: -110px;">
-    <div style="display: flex; flex-direction: column; align-items: center; padding: 100px 40px 160px 0;">
+<div class="outer">
+  <div id="team" class="inner bg">
+    <div class="content">
       <h1 class="title">OUR TEAM</h1>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+      <div class="frame">
         <app-team-member [member]="member" *ngFor="let member of members"></app-team-member>
       </div>
+    </div>
   </div>
 </div>

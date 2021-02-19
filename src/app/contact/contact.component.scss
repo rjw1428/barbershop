@@ -11,13 +11,10 @@
 .inner {
   clip-path: polygon(0 8%, 100% 4%, 84% 100%, 14% 100%);
   left: 5px;
-  right: 5px;
   top: 5px;
-  bottom: 5px;
-  position: absolute;
-  overflow: hidden;
-
-
+  position: relative;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
 }
 
 .outer {
@@ -30,28 +27,43 @@
   background-color: black;
 }
 
+.big-content {
+  display: block;
+}
+.small-content {
+  display: none;
+}
 
 @media screen and (max-width: 1400px) {
   .outer {
-    clip-path: polygon(0 0, 100% 8%, 84% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 10%, 84% 100%, 0 100%);
     margin-left: 0;
     margin-right: 0;
     width: 100%;
   }
 
   .inner {
-    clip-path: polygon(0 0, 100% 8%, 84% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 10%, 84% 100%, 0 100%);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .big-content {
+    display: none;
+  }
+  .small-content {
+    display: block;
   }
 }
 
 
 @media screen and (max-width: 600px) {
   .outer {
-    clip-path: polygon(0 0, 100% 10%, 84% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 12%, 84% 100%, 0 100%);
     margin-left: 0;
   }
 
   .inner {
-    clip-path: polygon(0 0, 100% 10%, 84% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 12%, 84% 100%, 0 100%);
   }
 }

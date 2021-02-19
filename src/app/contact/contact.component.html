@@ -1,7 +1,7 @@
 <div class="outer">
-  <div class="inner">
+  <div class="inner bg">
     <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" height="100%" width="120%" viewBox="0 0 180 150"
-      style="position: absolute;" class="bg">
+      style="position: absolute;" class="big-content">
       <defs>
         <style>
           path {
@@ -43,6 +43,45 @@
         <text class="caption-text" x="40" y="80">(267) 930-3980</text>
 
       </g>
+    </svg>
+
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" height="100%" width="120%" viewBox="0 0 180 150"
+      style="position: absolute;" class="small-content">
+      <defs>
+        <style>
+
+          .header-text-sm {
+            font-family: Dekko, cursive;
+            font-size: 2em;
+          }
+
+          .caption-text-sm {
+            font-family: Dekko, cursive;
+            font-size: .7em;
+            font-weight: 800;
+          }
+
+
+          .button-text-sm {
+            cursor: pointer;
+            font-family: Bangers, sans-serif;
+            font-size: 1em;
+          }
+
+        </style>
+      </defs>
+      <text class="header-text-sm" x="25" y="0">Get In </text>
+      <text class="header-text-sm" x="30" y="28">Touch </text>
+      <g transform="translate(7,50)">
+
+        <path
+          d="M66.1 1.5C30.4 1.5 1.5 22.9 1.5 46c0 18.1 17.9 33.5 42.8 39.3 1.5 14.8-1.3 39-8.5 48.1 10.8-12.5 22.4-33.6 26.6-45.7 1.2 0 2.5.1 3.7.1 35.7 0 64.6-18.7 64.6-41.8S101.8 1.5 66.1 1.5zM35.8 133.4c-.3.4-.7.8-1 1.1.4-.3.7-.7 1-1.1z" />
+          <rect class="button" x="30" y="25" width="70" height="40" style="fill:#2972b6;" />
+          <text class="button-text-sm" x="34" y="48" fill="#FFF" (click)="onBook()">Book Now</text>
+      </g>
+      <text class="caption-text-sm" x="30" y="200">(267) 930-3980 </text>
     </svg>
   </div>
 </div>

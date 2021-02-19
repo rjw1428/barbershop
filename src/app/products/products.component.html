@@ -1,10 +1,12 @@
-<div class="bg" style="clip-path: polygon(13% 80px, 100% 0%, 100% 100%, 4% calc(100% - 145px)); padding-top: 100px; margin-top: -145px; padding-bottom: 210px; position: relative; margin-left: -12%; display: flex; justify-content: center;">
-  <div style="margin-left: 10%; display: flex; flex-direction: column; align-items: center; flex-basis: 35vw; background-color: rgba(0,0,0,.8); backdrop-filter: blur(10px);">
-    <h1 class="title">SERVICES</h1>
-    <ul style="margin: 0; padding: 0; width: 80%;">
-      <li *ngFor="let product of products">
-        <app-product [product]="product"></app-product>
-      </li>
-    </ul>
+<div class="outer">
+  <div class="inner bg">
+    <div class="content">
+      <h1 class="title">SERVICES</h1>
+      <ul style="margin: 0; padding: 0;">
+        <li *ngFor="let product of products">
+          <app-product [product]="product"></app-product>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
