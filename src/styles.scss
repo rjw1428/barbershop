@@ -1,9 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-@import url(//fonts.googleapis.com/css2?family=Dekko&family=Montserrat:wght@100;400&display=swap);
+@import url(//fonts.googleapis.com/css2?family=Quattrocento&Dekko&family=Montserrat:wght@100;400&display=swap);
 @import url(//fonts.googleapis.com/css?family=Patrick+Hand+SC|Bangers|Happy+Monkey);
+
+@font-face { font-family: Pirulen; src: url(assets/fonts/PirulenRg-Regular.woff) format("woff"); }
+
+/*
+ --- FONTS ---
+ BARBERSHOP -> quattrocento
+ DENIM -> Pirulen
+
+ HEADER NAVIGATION FONT -> Dekko
+ SECTION HEADERS -> BANGERS
+ BODY FONT -> Montserrat
+*/
+
 
 :root {
   --button-bg: rgba(41, 114, 182, 0.6);
+  --main-color: rgb(41, 114, 182)
 }
 
 .test {
@@ -24,7 +38,7 @@ p {
 .title {
   font-family: "Bangers";
   margin: 10px 0 0 0;
-  text-shadow: -1px -1px rgb(41, 114, 182), 1px 1px rgb(15, 63, 107), 2px 2px rgb(15, 63, 107);
+  text-shadow: -1px -1px var(--main-color), 1px 1px rgb(15, 63, 107), 2px 2px rgb(15, 63, 107);
   width: 100%;
   text-align: center;
   font-size: 64px;

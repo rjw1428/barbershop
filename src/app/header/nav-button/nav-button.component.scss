@@ -4,13 +4,37 @@
   cursor: pointer;
   transition: .25s;
   text-shadow: 1px 1px black;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  font-size: 1.8em;
 }
 
 .nav-button:hover {
     background-color: var(--button-bg)
 }
 
-h1 {
-    font-weight: 100;
-    text-transform: uppercase;
+@media screen and (max-width: 1400px) {
+  .nav-button {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .nav-button {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .nav-button {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .nav-button {
+    display: none;
+  }
 }

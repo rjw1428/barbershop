@@ -1,40 +1,48 @@
-<div style="width: 120%; height: calc(100% - 20px); padding-top: 10px; margin-left: -10%; position: relative">
+<div class="outer">
+  <div class="inner">
+    <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" height="100%" width="120%" viewBox="0 0 180 150"
+      style="position: absolute;" class="bg">
+      <defs>
+        <style>
+          path {
+            fill: white;
+            stroke: #000;
+            stroke-width: 4;
+            stroke-linejoin: bevel;
+          }
 
-  <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="100%" width="120%" viewBox="0 0 180 150"
-    style="position: absolute;" class="bg">
-    <defs>
-      <style>
-        path {
-          fill: white;
-          stroke: #000;
-          stroke-width: 4;
-          stroke-linejoin: bevel;
-        }
+          .header-text {
+            font-family: Dekko, cursive;
+            font-size: .7em;
+          }
 
-        .caption-text {
-          font-family: Dekko, cursive;
-        }
+          .caption-text {
+            font-family: Dekko, cursive;
+            font-size: .4em;
+          }
 
-        .button {
-          cursor: pointer;
-        }
+          .button {
+            cursor: pointer;
+          }
 
-        .button-text {
-          cursor: pointer;
-          font-family: Bangers, sans-serif;
-        }
+          .button-text {
+            cursor: pointer;
+            font-family: Bangers, sans-serif;
+            font-size: .5em;
+          }
 
-      </style>
-    </defs>
-    <g transform="translate(7,10)">
-      <path
-        d="M66.1 1.5C30.4 1.5 1.5 22.9 1.5 46c0 18.1 17.9 33.5 42.8 39.3 1.5 14.8-1.3 39-8.5 48.1 10.8-12.5 22.4-33.6 26.6-45.7 1.2 0 2.5.1 3.7.1 35.7 0 64.6-18.7 64.6-41.8S101.8 1.5 66.1 1.5zM35.8 133.4c-.3.4-.7.8-1 1.1.4-.3.7-.7 1-1.1z" />
-      <text class="caption-text" x="25" y="25">Get In Touch</text>
-      <rect class="button" x="40" y="30" width="50" height="25" style="fill:#2972b6;" />
-      <text class="button-text" x="49" y="45" font-size=".5em" fill="#FFF" (click)="onBook()">Book Now</text>
-      <text class="caption-text" x="20" y="68" font-size=".5em">BarbershopDenim@gmail.com</text>
-      <text class="caption-text" x="40" y="80" font-size=".5em">(267) 930-3980</text>
+        </style>
+      </defs>
+      <g transform="translate(7,10)">
+        <path
+          d="M66.1 1.5C30.4 1.5 1.5 22.9 1.5 46c0 18.1 17.9 33.5 42.8 39.3 1.5 14.8-1.3 39-8.5 48.1 10.8-12.5 22.4-33.6 26.6-45.7 1.2 0 2.5.1 3.7.1 35.7 0 64.6-18.7 64.6-41.8S101.8 1.5 66.1 1.5zM35.8 133.4c-.3.4-.7.8-1 1.1.4-.3.7-.7 1-1.1z" />
+        <text class="header-text" x="30" y="25">Get In Touch</text>
+        <rect class="button" x="40" y="30" width="50" height="25" style="fill:#2972b6;" />
+        <text class="button-text" x="49" y="45" fill="#FFF" (click)="onBook()">Book Now</text>
+        <text class="caption-text" x="20" y="68">BarbershopDenim@gmail.com</text>
+        <text class="caption-text" x="40" y="80">(267) 930-3980</text>
 
-    </g>
-  </svg>
+      </g>
+    </svg>
+  </div>
 </div>

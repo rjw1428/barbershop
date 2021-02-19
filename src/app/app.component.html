@@ -1,18 +1,27 @@
-<div style="display: flex; flex-direction: column; justify-content: center;">
+<div style="display: flex; flex-direction: column; justify-content: center; overflow-x: hidden;">
 
   <app-header></app-header>
 
-  <div style="display: flex; padding: 0 20px; justify-content: space-between" >
+  <div style="display: flex; padding: 0 20px; justify-content: space-between">
     <app-team style="flex-basis: 50%;"></app-team>
     <app-products style="flex-basis: 50%;"></app-products>
   </div>
 
   <app-gallery></app-gallery>
 
-  <div style="display: flex; padding: 0 20px; justify-content: space-between">
-    <app-hours  style="flex-basis: 35%;"></app-hours>
-    <app-contact  style="flex-basis: 30%;"></app-contact>
+  <div style="padding: 0 20px; justify-content: space-between; height: 500px" class="break-panel-wide">
+    <app-hours style="flex-basis: 35%;"></app-hours>
+    <app-contact style="flex-basis: 30%;"></app-contact>
     <app-about style="flex-basis: 35%;"></app-about>
+  </div>
+
+  <div style="padding: 0 20px; justify-content: space-between;" class="break-panel-narrow">
+    <app-contact style="flex-basis: 30%;"></app-contact>
+    <app-hours style="flex-basis: 70%;"></app-hours>
+  </div>
+
+  <div style="padding: 0 20px; align-items: stretch;" class="break-panel">
+    <app-about></app-about>
   </div>
 
   <app-location></app-location>

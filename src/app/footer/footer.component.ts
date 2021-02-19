@@ -15,9 +15,37 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     this.year = new Date().getFullYear()
   }
+  panel1() {
+    window.scrollTo({
+      top: 900,
+      behavior: 'smooth'
+    });
+  }
+
+  panel2() {
+    window.scrollTo({
+      top: 1600,
+      behavior: 'smooth'
+    });
+  }
+
+
+  panel3() {
+    window.scrollTo({
+      top: 2200,
+      behavior: 'smooth'
+    });
+  }
+
+
+  panel4() {
+    window.scrollTo({
+      top: 2600,
+      behavior: 'smooth'
+    });
+  }
 
   onBook() {
     this.service.book()
   }
-
 }

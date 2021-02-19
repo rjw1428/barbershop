@@ -10,8 +10,32 @@
 .frame video {
   mix-blend-mode: overlay;
   filter: grayscale(100%);
-
 }
+
+#main-barbershop {
+  position: relative;
+  left: 6px;
+  color: white;
+  font-family: 'Quattrocento', serif;
+  font-size: 2em;
+  letter-spacing: 12px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  text-shadow: 2px 2px 2px black;
+}
+
+#main-denim {
+  color: var(--main-color);
+  font-family: 'Pirulen', sans-serif;
+  font-size: 4.5em;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  line-height: .7em;
+  text-shadow: 3px 3px 3px black;
+}
+
 
 .header-content {
   position: absolute;
@@ -35,7 +59,8 @@
 .book-button {
     background-color: var(--button-bg);
     transition: .3s;
-
+    padding: 24px 48px; 
+    cursor: pointer;
 }
 
 .book-button:hover {
@@ -45,4 +70,34 @@
 h2,
 h3 {
     font-weight: 100;
+}
+
+@media screen and (max-width: 1400px) {
+  #main-barbershop {
+    font-size: 1.5em;
+  }
+  #main-denim {
+    font-size: 4em;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  #main-barbershop {
+    font-size: 1em;
+  }
+  #main-denim {
+    font-size: 3.5em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h2 {
+    font-size: 1em;
+  }
+  h3 {
+    font-size: .8em;
+  }
+  .book-button {
+    padding: 16px 32px; 
+  }
 }

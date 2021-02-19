@@ -1,7 +1,7 @@
 .title {
   transform: skew(-10deg, 0);
   padding-bottom: 12px;
-  margin-right: 400px;
+  margin-left: -180px;
   position: relative;
   z-index: 10;
 }
@@ -22,6 +22,7 @@
   top: 5px;
   bottom: 5px;
   position: absolute;
+  overflow: hidden;
 }
 
 

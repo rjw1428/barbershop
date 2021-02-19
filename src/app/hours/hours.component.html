@@ -1,17 +1,18 @@
-<div 
-  style="clip-path: polygon(0 0, 88% 8%, 100% 100%, 0% 100%); height: 100%; position: relative;">
-  <div class="bg"></div>
-  <div 
-    style="display: flex; flex-direction: column; align-items: flex-start; padding: 20px 150px 12px 48px; position: absolute; width: 80%;">
-    <h1 class="title">HOURS</h1>
-    <ul style="margin: 0; padding: 0; width: 80%;">
-      <li *ngFor="let hour of hours">
-        <div style="display: flex; justify-content: space-between">
-          <p >{{hour.day}}: </p>
-          <p *ngIf="hour.closed">CLOSED</p>
-          <p *ngIf="!hour.closed">{{hour.open}} - {{hour.close}}</p>
-        </div>
-      </li>
-    </ul>
+<div class="outer">
+  <div class="inner">
+    <div class="bg"></div>
+    <div style="display: flex; flex-direction: column; align-items: flex-start; padding: 20px 150px 12px 48px; position: absolute; width: 80%;">
+      <h1 class="title">HOURS</h1>
+      <ul style="margin: 0; padding: 0; width: 80%;">
+        <li *ngFor="let hour of hours">
+          <div class="list-item" style="display: flex; justify-content: space-between">
+            <p class="day-long">{{hour.day}}: </p>
+            <p class="day-short">{{hour.dayShort}}: </p>
+            <p *ngIf="hour.closed">CLOSED</p>
+            <p *ngIf="!hour.closed">{{hour.open}} - {{hour.close}}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

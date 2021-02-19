@@ -1,0 +1,31 @@
+.break-panel-narrow {
+  display: none;
+}
+
+.break-panel-wide {
+  display: flex;
+}
+
+.break-panel {
+    display: none;
+}
+
+@media screen and (max-width: 1400px) {
+  .break-panel-wide {
+    display: none;
+  }
+
+  .break-panel-narrow {
+    display: flex;
+    height: 500px;
+  }
+  .break-panel {
+    display: block;
+}
+}
+
+@media screen and (max-width: 600px) {
+  .break-panel-narrow {
+    height: 400px;
+  }
+}

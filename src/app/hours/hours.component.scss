@@ -1,25 +1,118 @@
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 .bg {
 
-    position: absolute;
-    z-index: -1;
-    background-image: url('../../assets/media/chairs.jpg');
-    background-position: center;
-    background-size: cover;
-    filter: grayscale(100%) blur(3px);
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  z-index: -1;
+  background-image: url('../../assets/media/chairs.jpg');
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(100%) blur(3px);
+  width: 100%;
+  height: 100%;
 }
 
 p {
-    font-size: larger;
-    margin: .5em 0;
-    text-shadow: 1px 1px 1px black;
+  font-size: larger;
+  margin: .5em 0;
+  text-shadow: 1px 1px 1px black;
 }
 
 .title {
-    text-align: left;
+  text-align: left;
+}
+
+.outer {
+  clip-path: polygon(0 0, 88% 8%, 100% 100%, 0% 100%);
+  height: 100%;
+  position: relative;
+  background-color: black;
+}
+
+.inner {
+  background: rgb(41, 114, 182);
+  clip-path: polygon(0 0, 88% 8%, 100% 100%, 0% 100%);
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  position: absolute;
+  overflow: hidden;
+}
+
+
+.day-short {
+  display: none;
+}
+
+.day-long {
+  display: block;
+}
+
+@media screen and (max-width: 1400px) {
+  .inner {
+    clip-path: polygon(6% 8%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .outer {
+    clip-path: polygon(6% 8%, 100% 0%, 100% 100%, 0% 100%);
+    margin-left: -4%;
+  }
+
+  li {
+    margin-left: 24%;
+  }
+
+  .title {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .outer {
+    margin-left: -3.5%;
+  }
+}
+
+
+@media screen and (max-width: 960px) {
+  .day-long {
+    display: none;
+  }
+
+  .day-short {
+    display: block;
+  }
+
+  .outer {
+    margin-left: -2%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  li {
+    margin-left: 0%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .inner {
+    clip-path: polygon(6% 10%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .outer {
+    clip-path: polygon(6% 10%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  p {
+    font-size: .9em;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  p {
+    font-size: .7em;
+  }
 }

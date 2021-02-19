@@ -3,18 +3,20 @@
 
     <div style="display: flex; flex-basis: 40%; justify-content: flex-start;">
       <app-nav-button (click)="panel1()">Our Team</app-nav-button>
-      <app-nav-button (click)="panel1()">Services</app-nav-button>
-      <app-nav-button (click)="panel2()">Gallery</app-nav-button>
+      <app-nav-button (click)="panel3()">Hours</app-nav-button>
+      <app-nav-button (click)="panel3()">About</app-nav-button>
     </div>
 
-    <div style="flex-basis: 200px;">
-      <img src="../../assets/media/logo_lg.png" height="200px" width="200px">
+    <div style="flex-basis: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;margin-top: 1em;">
+      <h1 id="main-barbershop">BARBERSHOP</h1>
+      <h1 id="main-denim">DENIM</h1>
     </div>
 
     <div style="display: flex; flex-basis: 40%; justify-content: flex-end;">
-      <app-nav-button (click)="panel3()">About</app-nav-button>
-      <app-nav-button (click)="panel3()">Hours</app-nav-button>
+      <app-nav-button (click)="panel1()">Services</app-nav-button>
+      <app-nav-button (click)="panel2()">Gallery</app-nav-button>
       <app-nav-button (click)="panel4()">Map</app-nav-button>
+
     </div>
   </div>
 
@@ -28,7 +30,7 @@
 
   <div class="header-content"
     style="display: flex; justify-content: center; height: 100%; align-items: center; flex-direction: column;">
-    <div style="padding: 24px 48px; cursor: pointer;" class="book-button" (click)="onBook()">
+    <div class="book-button" (click)="onBook()">
       <h1>BOOK NOW</h1>
     </div>
     <h2 style="text-shadow: 1px 1px black;">1517 South Street Philadelphia, PA 19146</h2>

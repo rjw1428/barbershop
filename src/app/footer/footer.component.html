@@ -1,27 +1,46 @@
-<div style="background-color: black; display: flex; justify-content: space-between; padding: 0 100px">
-  <div style="display: flex; flex-direction: column; justify-content: center; flex-basis: 50%;" >
-    <ul >
-      <li class="footer-link">Team</li>
-      <li class="footer-link">Services</li>
-      <li class="footer-link">Gallery</li>
-      <li class="footer-link">About</li>
-      <li class="footer-link">Hours</li>
-      <hr>
-    </ul>
-  </div>
-  <div style="display: flex; flex-basis: 250px; flex-direction: column; align-items: center;">
-    <img src="../../assets/media/logo_lg.png" height="150px" width="150px">
-    <p style="font-size: small;">&copy; {{year}} Barbershop Denim™</p>
-  </div>
-  <div style="display: flex; flex-direction: column; align-items: flex-end; justify-content: center; flex-basis: 50%;">
-    <div class="book-button" (click)="onBook()">
-        <h3>Make an appointment</h3>
+<div class="frame">
+  <div style="display: flex; flex-direction: column;">
+    <div style="display: flex; justify-content: space-between;">
+      <div style="display: flex; flex-direction: column; justify-content: center; flex-basis: 50%;">
+        <ul class="link-list">
+          <li class="footer-link" (click)="panel1()">Team</li>
+          <li class="footer-link" (click)="panel1()">Services</li>
+          <li class="footer-link" (click)="panel2()">Gallery</li>
+          <li class="footer-link" (click)="panel3()">About</li>
+          <li class="footer-link" (click)="panel3()">Hours</li>
+          <hr>
+        </ul>
+
+        <ul class="link-col">
+          <li class="other-link" (click)="panel1()">Team</li>
+          <li class="other-link" (click)="panel1()">Services</li>
+          <li class="other-link" (click)="panel2()">Gallery</li>
+          <li class="other-link" (click)="panel3()">About</li>
+          <li class="other-link" (click)="panel3()">Hours</li>
+        </ul>
+      </div>
+      <div class="center-logo">
+        <img src="../../assets/media/logo_lg.png" height="150px" width="150px">
+        <p style="font-size: small; white-space: nowrap;">&copy; {{year}} Barbershop Denim™</p>
+      </div>
+      <div
+        style="display: flex; flex-direction: column; align-items: flex-end; justify-content: center; flex-basis: 50%;">
+        <div class="book-button" (click)="onBook()">
+          <h3 style=" white-space: nowrap;">Make an appointment</h3>
+        </div>
+
+        <div class="icon-list">
+          <i class="fab fa-instagram fa-3x" style="cursor: pointer;"></i>
+          <i class="fab fa-yelp fa-3x" style="cursor: pointer;"></i>
+          <i class="far fa-envelope fa-3x" style="cursor: pointer;"></i>
+        </div>
+      </div>
     </div>
-    
-    <div style="display: flex; width: 260px; justify-content: space-around; color: white;">
-      <i class="fab fa-instagram fa-3x" style="cursor: pointer;"></i>
-      <i class="fab fa-yelp fa-3x" style="cursor: pointer;"></i>
-      <i class="far fa-envelope fa-3x" style="cursor: pointer;"></i>
+
+    <div class="lower-logo">
+      <img src="../../assets/media/logo_lg.png" height="150px" width="150px">
+      <p style="font-size: small; white-space: nowrap;">&copy; {{year}} Barbershop Denim™</p>
     </div>
+
   </div>
 </div>

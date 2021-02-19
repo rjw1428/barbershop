@@ -1,12 +1,57 @@
 .bg {
-    clip-path: polygon(0 30px, 81% 15px, 74% 100%, 10% 100%);
-    background-image: radial-gradient(ellipse farthest-corner, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 35%, #ffffff 30%, #ffffff 40%, rgba(0, 0, 0, 0) 90%),
-      radial-gradient(ellipse farthest-corner at 0px 0px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, #ffffff 15%, #ffffff 20%, rgba(0, 0, 0, 0) 50%),
-      radial-gradient(ellipse farthest-corner at 8px 8px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, #ffffff 15%, #ffffff 20%, rgba(0, 0, 0, 0) 50%),
-      radial-gradient(ellipse farthest-corner at 0px 8px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, #ffffff 15%, #ffffff 20%, rgba(0, 0, 0, 0) 40%),
-      radial-gradient(ellipse farthest-corner at 8px 0px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, #ffffff 15%, #ffffff 20%, rgba(0, 0, 0, 0) 50%),
-      linear-gradient(40deg, rgb(41, 114, 182) 0,rgb(41, 114, 182) 100%);
-    background-size: 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 100% 100%;
-  
+  background-image: radial-gradient(ellipse farthest-corner, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 35%, #ffffff 30%, #ffffff 40%, rgba(0, 0, 0, 0) 90%),
+    radial-gradient(ellipse farthest-corner at 0px 0px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, #ffffff 15%, #ffffff 20%, rgba(0, 0, 0, 0) 50%),
+    radial-gradient(ellipse farthest-corner at 8px 8px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, #ffffff 15%, #ffffff 20%, rgba(0, 0, 0, 0) 50%),
+    radial-gradient(ellipse farthest-corner at 0px 8px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, #ffffff 15%, #ffffff 20%, rgba(0, 0, 0, 0) 40%),
+    radial-gradient(ellipse farthest-corner at 8px 0px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 20%, #ffffff 15%, #ffffff 20%, rgba(0, 0, 0, 0) 50%),
+    linear-gradient(40deg, rgb(41, 114, 182) 0, rgb(41, 114, 182) 100%);
+  background-size: 8px 8px, 8px 8px, 8px 8px, 8px 8px, 8px 8px, 100% 100%;
+}
+
+.inner {
+  clip-path: polygon(0 8%, 100% 4%, 84% 100%, 14% 100%);
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  position: absolute;
+  overflow: hidden;
+
+
+}
+
+.outer {
+  width: 110%;
+  height: 100%;
+  margin-left: -10%;
+  margin-right: -10%;
+  position: relative;
+  clip-path: polygon(0 8%, 100% 4%, 84% 100%, 14% 100%);
+  background-color: black;
+}
+
+
+@media screen and (max-width: 1400px) {
+  .outer {
+    clip-path: polygon(0 0, 100% 8%, 84% 100%, 0 100%);
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
   }
 
+  .inner {
+    clip-path: polygon(0 0, 100% 8%, 84% 100%, 0 100%);
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .outer {
+    clip-path: polygon(0 0, 100% 10%, 84% 100%, 0 100%);
+    margin-left: 0;
+  }
+
+  .inner {
+    clip-path: polygon(0 0, 100% 10%, 84% 100%, 0 100%);
+  }
+}
