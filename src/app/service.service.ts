@@ -8,16 +8,23 @@ import { Observable } from 'rxjs';
 })
 export class ServiceService {
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
   }
-
-  // getData(): Observable<any> {
-  //   return this.http.get('https://api.publicapis.org/categories')
-  // }
 
   book() {
-    window.location.href ="https://booksy.com/en-us/90270_barbershop-denim_barber-shop_134598_philadelphia"
+    window.location.href = "https://booksy.com/en-us/90270_barbershop-denim_barber-shop_134598_philadelphia"
   }
 
+  insta() {
+    window.location.href = "https://www.instagram.com/barbershopdenim1517/"
+  }
+
+  yelp() {
+    window.location.href = "https://www.yelp.com/biz/barbershop-denim-philadelphia?osq=barbershop+denim"
+  }
+
+  email() {
+    window.location.href = "mailto:BarbershopDenim@gmail.com?subject=Getting in touch"
+  }
 }

@@ -15,6 +15,19 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     this.year = new Date().getFullYear()
   }
+
+  onInsta() {
+    this.service.insta()
+  }
+
+  onYelp() {
+    this.service.yelp()
+  }
+
+  onEmail() {
+    this.service.email()
+  }
+  
   panel1() {
     window.scrollTo({
       top: 900,

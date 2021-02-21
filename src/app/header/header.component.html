@@ -1,28 +1,44 @@
 <div>
   <div class="navbar">
 
-    <div style="display: flex; flex-basis: 40%; justify-content: flex-start;">
+    <div style="flex-basis: 40%; justify-content: flex-start;" class="nav-button">
       <app-nav-button (click)="panel1()">Our Team</app-nav-button>
       <app-nav-button (click)="panel3()">Hours</app-nav-button>
       <app-nav-button (click)="panel3()">About</app-nav-button>
     </div>
 
-    <div style="flex-basis: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;margin-top: 1em;">
+    <div
+      style="flex-basis: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;margin-top: 1em;">
       <h1 id="main-barbershop">BARBERSHOP</h1>
       <h1 id="main-denim">DENIM</h1>
     </div>
 
-    <div style="display: flex; flex-basis: 40%; justify-content: flex-end;">
+    <div style="flex-basis: 40%; justify-content: flex-end;" class="nav-button">
       <app-nav-button (click)="panel1()">Services</app-nav-button>
       <app-nav-button (click)="panel2()">Gallery</app-nav-button>
       <app-nav-button (click)="panel4()">Map</app-nav-button>
-
     </div>
+  </div>
+
+  <div class="menu-toggle">
+    <i class="fas fa-bars  fa-2x" (click)="onOpen()"></i>
+  </div>
+
+  <div class="menu" #menu>
+    <div style="display: flex; justify-content: flex-end; padding: 10px;">
+      <i style="color: white; " class="fas fa-times" (click)="onClose()"></i>
+    </div>
+    <h3 class="menu-item" (click)="panel1()">Services</h3>
+    <h3 class="menu-item" (click)="panel3()">Hours</h3>
+    <h3 class="menu-item" (click)="panel2()">Gallery</h3>
+    <h3 class="menu-item" (click)="panel1()">Our Team</h3>
+    <h3 class="menu-item" (click)="panel3()">About</h3>
+    <h3 class="menu-item" (click)="panel4()">Map</h3>
   </div>
 
 
   <div class="frame">
-    <video [autoplay]="true" loop [muted]="true" playsinline class="header-content">
+    <video [autoplay]="true" loop [muted]="true" playsinline>
       <source src="../../assets/media/vid1.mp4" type="video/mp4">
     </video>
   </div>
@@ -36,9 +52,9 @@
     <h2 style="text-shadow: 1px 1px black;">1517 South Street Philadelphia, PA 19146</h2>
     <h3 style="text-shadow: 1px 1px black;">(267) 930-3980</h3>
     <div style="display: flex; width: 200px; justify-content: space-around; color: white;">
-      <i class="fab fa-instagram fa-3x" style="cursor: pointer;"></i>
-      <i class="fab fa-yelp fa-3x" style="cursor: pointer;"></i>
-      <i class="far fa-envelope fa-3x" style="cursor: pointer;"></i>
+      <i class="fab fa-instagram fa-3x" style="cursor: pointer;" (click)="onInsta()"></i>
+      <i class="fab fa-yelp fa-3x" style="cursor: pointer;" (click)="onYelp()"></i>
+      <i class="far fa-envelope fa-3x" style="cursor: pointer;" (click)="onEmail()"></i>
     </div>
   </div>
 </div>

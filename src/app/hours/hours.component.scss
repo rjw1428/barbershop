@@ -116,12 +116,20 @@ p {
     clip-path: polygon(6% 12%, 100% 0%, 100% 100%, 0% 100%);
   }
 
+  .title {
+    margin-top: 48px;
+  }
+
   p {
     font-size: .9em;
   }
 }
 
 @media screen and (max-width: 460px) {
+  .title {
+    margin-top: 84px;
+  }
+
   p {
     font-size: .7em;
   }

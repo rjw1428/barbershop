@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ServiceService } from '../service.service';
 
 @Component({
@@ -6,7 +6,8 @@ import { ServiceService } from '../service.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
+  @ViewChild('menu') navMenu: ElementRef
   constructor(
     private service: ServiceService
   ) { }
@@ -14,11 +15,36 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(): void {
+  }
+
+  onOpen() {
+    console.log("OPEN")
+    this.navMenu.nativeElement.style.width = "500px";
+  }
+
+  onClose() {
+    this.navMenu.nativeElement.style.width = 0;
+  }
+
+  onInsta() {
+    this.service.insta()
+  }
+
+  onYelp() {
+    this.service.yelp()
+  }
+
+  onEmail() {
+    this.service.email()
+  }
+
   panel1() {
     window.scrollTo({
       top: 900,
       behavior: 'smooth'
     });
+    this.onClose()
   }
 
   panel2() {
@@ -26,6 +52,7 @@ export class HeaderComponent implements OnInit {
       top: 1600,
       behavior: 'smooth'
     });
+    this.onClose()
   }
 
 
@@ -34,6 +61,7 @@ export class HeaderComponent implements OnInit {
       top: 2200,
       behavior: 'smooth'
     });
+    this.onClose()
   }
 
 
@@ -42,6 +70,7 @@ export class HeaderComponent implements OnInit {
       top: 2600,
       behavior: 'smooth'
     });
+    this.onClose()
   }
 
   onBook() {

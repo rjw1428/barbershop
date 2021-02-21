@@ -27,14 +27,14 @@ export class TeamComponent implements OnInit {
     img: "/assets/media/brian.jpeg"
   },
   {
-    name: "Adrian Chiu",
-    position: "Assistant Manager",
-    img: "/assets/media/adrian.jpeg"
+    name: "Rachael",
+    position: "Management & Scheduling",
+    img: "/assets/media/rachael.png"
   },
   {
-    name: "Eve Tenenebaum",
-    position: "Assistant Manager",
-    img: "/assets/media/eve.jpeg"
+    name: "Haley",
+    position: "Management & Scheduling",
+    img: "/assets/media/haley.png"
   }] 
   constructor() { }
 

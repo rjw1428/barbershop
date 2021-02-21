@@ -1,4 +1,17 @@
 iframe {
-    filter: gray;
-    -webkit-filter: grayscale(80%);
+  filter: gray;
+  -webkit-filter: grayscale(80%);
+}
+
+.outer {
+    background-color: black;
+    margin: 20px 20px 16px 20px;
+    height: 510px;
+}   
+
+.inner {
+  position: relative;
+  top: 5px;
+  left: 5px;
+  width: calc(100% - 10px)
 }

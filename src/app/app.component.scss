@@ -7,9 +7,23 @@
 }
 
 .break-panel {
-    display: none;
+  display: none;
 }
 
+
+.team {
+  flex-basis: 50%;
+}
+
+.products {
+  flex-basis: 50%;
+}
+
+.second-row {
+  display: flex;
+  padding: 0 20px;
+  justify-content: space-between;
+}
 
 @media screen and (max-width: 1400px) {
   .break-panel-wide {
@@ -19,7 +33,14 @@
   .break-panel-narrow {
     display: flex;
   }
+
   .break-panel {
     display: block;
+  }
 }
+
+@media screen and (max-width: 960px) {
+    .second-row {
+        flex-direction: column-reverse;
+    }
 }

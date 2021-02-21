@@ -15,6 +15,9 @@
   position: relative;
   width: calc(100% - 10px);
   height: calc(100% - 10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .outer {
@@ -61,6 +64,7 @@
   .outer {
     clip-path: polygon(0 0, 100% 12%, 84% 100%, 0 100%);
     margin-left: 0;
+    margin-bottom: 10px;
   }
 
   .inner {
