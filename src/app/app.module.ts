@@ -17,8 +17,9 @@ import { FooterComponent } from './footer/footer.component';
 import { NavButtonComponent } from './header/nav-button/nav-button.component';
 import { TeamMemberComponent } from './team/team-member/team-member.component';
 import { ProductComponent } from './products/product/product.component';
-import { ContactComponent } from './contact/contact.component'
-
+import { ContactComponent } from './contact/contact.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { TeamPopupComponent } from './team/team-popup/team-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,12 +34,14 @@ import { ContactComponent } from './contact/contact.component'
     NavButtonComponent,
     TeamMemberComponent,
     ProductComponent,
-    ContactComponent
+    ContactComponent,
+    TeamPopupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatDialogModule,
     BrowserAnimationsModule
   ],
   providers: [ServiceService],

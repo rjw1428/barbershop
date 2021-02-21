@@ -8,6 +8,7 @@ import { ServiceService } from '../service.service';
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
   @ViewChild('menu') navMenu: ElementRef
+  @ViewChild('other') hiddenLayer: ElementRef
   constructor(
     private service: ServiceService
   ) { }
@@ -19,12 +20,15 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   onOpen() {
-    console.log("OPEN")
     this.navMenu.nativeElement.style.width = "500px";
+    this.hiddenLayer.nativeElement.style.zIndex = "500"
+    this.hiddenLayer.nativeElement.style.backgroundColor = "rgba(0,0,0,.5)"
   }
 
   onClose() {
     this.navMenu.nativeElement.style.width = 0;
+    this.hiddenLayer.nativeElement.style.zIndex = 0
+    this.hiddenLayer.nativeElement.style.backgroundColor = "rgba(0,0,0,0)"
   }
 
   onInsta() {

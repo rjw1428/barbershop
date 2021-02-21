@@ -33,6 +33,42 @@ img {
 }
 
 
+@media screen and (max-width: 960px) {
+  img {
+    height: 200px;
+    width: auto;
+  }
+
+  .card {
+    width: 200px
+  }
+}
+
+@media screen and (max-width: 800px) {
+  img {
+    height: 150px;
+    width: auto;
+  }
+
+  .card {
+    width: 150px
+  }
+}
+
+@media screen and (max-width: 600px) {
+  img {
+    height: 100px;
+    width: auto;
+  }
+
+  .card {
+    width: 100px
+  }
+  h3 {
+      font-size: 1em;
+  }
+}
+
 // @media screen and (max-width: 780px) {
 //   img {
 //     height: 100px;

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Member } from '../models/member';
+import { TeamPopupComponent } from './team-popup/team-popup.component';
 
 @Component({
   selector: 'app-team',
@@ -6,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team.component.scss']
 })
 export class TeamComponent implements OnInit {
-  members = [{
+  members: Member[] = [{
     name: "Chris Cahill",
     position: "Owner & Barber",
     img: "/assets/media/chris.jpeg"
@@ -35,10 +38,19 @@ export class TeamComponent implements OnInit {
     name: "Haley",
     position: "Management & Scheduling",
     img: "/assets/media/haley.png"
-  }] 
-  constructor() { }
+  }]
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
   }
 
+
+  onSelected(member: Member) {
+    console.log(member)
+    this.dialog.open(TeamPopupComponent, {
+      data: { member }
+    })
+  }
 }

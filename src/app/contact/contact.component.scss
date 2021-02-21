@@ -33,8 +33,19 @@
 .big-content {
   display: block;
 }
+
 .small-content {
   display: none;
+}
+
+.small-phone-text {
+  color: black;
+  font-weight: 800;
+  font-size: 28px;
+  text-align: center;
+  margin: 0;
+  background-color: white;
+  padding-right: 20px;
 }
 
 @media screen and (max-width: 1400px) {
@@ -54,6 +65,7 @@
   .big-content {
     display: none;
   }
+
   .small-content {
     display: block;
   }
@@ -69,5 +81,24 @@
 
   .inner {
     clip-path: polygon(0 0, 100% 12%, 84% 100%, 0 100%);
+  }
+
+  .small-phone-text {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .small-phone-text {
+    font-size: 18px;
+    padding-right: 10px;
+  }
+}
+
+
+@media screen and (max-width: 440px) {
+  .small-phone-text {
+    font-size: 14px;
+    
   }
 }

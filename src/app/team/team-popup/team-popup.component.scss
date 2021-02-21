@@ -1,0 +1,28 @@
+h3,
+p {
+    color: white;
+    font-weight: 400;
+}
+
+h1 {
+    margin: 8px 0;
+}
+
+button {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 0;
+    width: 100px;
+    padding: 12px 24px;
+    appearance: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+img {
+    // border: 5px solid black;
+    box-shadow: 2px 2px 5px black;
+}
