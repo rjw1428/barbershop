@@ -13,12 +13,20 @@
   <button mat-dialog-close>Close</button>
 </div> -->
 
-<div 
-  style="height: 80vh; min-height: 50vh; min-width: 100%; width: 600px; display: flex; flex-direction: column-reverse; justify-content: flex-start; background-size: cover; background-position: center; background-repeat: no-repeat;"
+<!-- TAKE TWO -->
+<div class="container"
+  style="display: flex; flex-direction: column-reverse; justify-content: flex-start; background-size: cover; background-position: center; background-repeat: no-repeat;"
   [ngStyle]="{'background-image': 'url('+data.member.img+')'}">
   <h1 class="title">{{data.member.name}}</h1>
   <h3 style="margin: 0; text-align: center; text-shadow: 1px 1px 1px black;">{{data.member.position}}</h3>
 </div>
+
+
+<!-- <div class="container">
+  <img [src]="data.member.img">
+  <h3 style="margin: 0; text-align: center; text-shadow: 1px 1px 1px black;">{{data.member.position}}</h3>
+  <h1 class="title">{{data.member.name}}</h1>
+</div> -->
 
 <div mat-dialog-actions style="display: flex; justify-content: center;">
   <button mat-dialog-close>Close</button>
