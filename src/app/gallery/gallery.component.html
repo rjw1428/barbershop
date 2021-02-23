@@ -1,11 +1,53 @@
 <div class="outer">
   <div class="inner">
-    <div style="padding-top: 20px; padding-bottom: 50px;">
-      <div style="display: flex; flex-direction: column; align-items: center;">
-        <h1 class="title">GALLERY</h1>
-        <div style="display: flex;  align-self: flex-start; padding-left: 20px; margin-top: -140px; overflow: hidden;">
-          <div *ngFor="let img of images" class="item" style="background-image: url('{{img}}');"> </div>
+    <div style="height: 600px;">
+      <h1 class="title">GALLERY</h1>
+      <div class="gallery" #gallery>
+        <app-gallery-image *ngFor="let img of images; let i=index;"
+          [image]="img" 
+          [width]="itemWidth"
+          [margin]="itemMargin"
+          [index]="i"
+          [active]="activeIndex"
+          [total]="images.length">
+        </app-gallery-image>
+      </div>
+        <!-- <div style="position: absolute; margin-top: -300px; background-color: lightgray; border-radius: 50%; font-size: 4em; width: 1.2em; text-align: center; cursor: pointer; opacity: .7;" (click)="onPrevious()"> &#60;</div> -->
+        <!-- <div style="position: absolute;  right: 40px; margin-top: -300px; background-color: lightgray; border-radius: 50%; font-size: 4em; width: 1.2em; text-align: center; cursor: pointer; opacity: .7;" (click)="onNext()"> &#62; </div> -->
+
+
+      <div class="gallery-narrow" >
+        <div class="row" style="margin-bottom: 12px; margin-top: -12px;" #upperRow>
+          <div style="display: inline-block; height: 300px;" *ngFor="let img of images; let i=index;">
+            <app-gallery-image *ngIf="i<images.length/2" 
+              [image]="img" 
+              [width]="itemWidth*2"
+              [margin]="itemMargin"
+              [index]="i"
+              [active]="activeIndex"
+              [total]="images.length">
+            </app-gallery-image>
+          </div>
         </div>
+        <div class="row" style="flex-direction: row-reverse;" #lowerRow>
+          <div style="display: inline-block; height: 300px;" *ngFor="let img of images; let i=index;">
+            <app-gallery-image *ngIf="i>=images.length/2" 
+              [image]="img" 
+              [width]="itemWidth*2"
+              [margin]="itemMargin"
+              [index]="i"
+              [active]="activeIndex"
+              [total]="images.length">
+            </app-gallery-image>
+          </div>
+        </div>
+        <!-- <div *ngFor="let img of images; let i=index;" style="height: 300px;" >
+          <div #elemet *ngIf="i%2==0" class="item" style="background-image: url('{{img}}');" [ngStyle]="{'width': 20+'vw', 'margin-right': 2+'vw'}"> </div>
+        </div>
+
+        <div *ngFor="let img of images; let i=index;" style="height: 300px;" >
+          <div #elemet *ngIf="i%2==1" class="item" style="background-image: url('{{img}}');" [ngStyle]="{'width': 20+'vw', 'margin-right': 2+'vw'}"> </div>
+        </div> -->
       </div>
     </div>
   </div>

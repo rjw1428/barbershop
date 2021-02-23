@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Member } from '../models/member';
+import { Popup } from '../models/popup';
 import { TeamPopupComponent } from './team-popup/team-popup.component';
 
 @Component({
@@ -48,9 +49,8 @@ export class TeamComponent implements OnInit {
 
 
   onSelected(member: Member) {
-    console.log(member)
     this.dialog.open(TeamPopupComponent, {
-      data: { member }
+      data: { title: member.name, subtitle: member.position, img: member.img } as Popup
     })
   }
 }

@@ -20,6 +20,7 @@ import { ProductComponent } from './products/product/product.component';
 import { ContactComponent } from './contact/contact.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TeamPopupComponent } from './team/team-popup/team-popup.component';
+import { GalleryImageComponent } from './gallery/gallery-image/gallery-image.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,14 +36,15 @@ import { TeamPopupComponent } from './team/team-popup/team-popup.component';
     TeamMemberComponent,
     ProductComponent,
     ContactComponent,
-    TeamPopupComponent
+    TeamPopupComponent,
+    GalleryImageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [ServiceService],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Member } from 'src/app/models/member';
+import { Popup } from 'src/app/models/popup';
 
 @Component({
   selector: 'app-team-popup',
@@ -10,7 +11,7 @@ import { Member } from 'src/app/models/member';
 export class TeamPopupComponent implements OnInit {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { member: Member }
+    @Inject(MAT_DIALOG_DATA) public data: Popup
   ) { }
 
 

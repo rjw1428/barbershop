@@ -58,19 +58,14 @@
 }
 
 .bg {
-//   background-color: var(--main-color);
+  background-color: var(--main-color);
   //   background-image: url("/assets/media/storefront.jpg");
-  //   background-repeat: no-repeat;
-  //   background-size: cover;
-  //   background-position: center;
-  //   background-blend-mode: normal;
 
-
-    background-image: url("/assets/media/denim.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: normal;
+    // background-image: url("/assets/media/denim.jpg");
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: center;
+    // background-blend-mode: normal;
 }
 
 
@@ -94,6 +89,7 @@
 
 p {
   font-weight: 100;
+  font-size: 1.2em;
   text-shadow: 1px 1px 1px black;
 }
 
