@@ -11,9 +11,9 @@
 }
 
 .outer {
-  clip-path: polygon(0 10%, 100% 0%, 90% 83%, 0% 88%);
+  clip-path: polygon(0 80px, 100% 0px, 90% calc(100% - 239px), 0% calc(100% - 140px));
   margin-top: -64px;
-  height: calc(100% + 64px);
+  height: calc(100% + 160px);
   background-color: black;
   display: flex;
   justify-content: center;
@@ -21,7 +21,7 @@
 }
 
 .inner {
-  clip-path: polygon(0 10%, 100% 0%, 90% 83%, 0% 88%);
+  clip-path: polygon(0 80px, 100% 0px, 90% calc(100% -  239px), 0% calc(100% - 140px));
   position: relative;
   top: 5px;
   height: calc(100% - 10px);
@@ -52,31 +52,30 @@
   }
 
   .outer {
-    height: calc(100% + 50px);
+    clip-path: polygon(0 80px, 100% 0px, 90% calc(100% - 145px), 0% calc(100% - 100px));
+  }
+
+  .inner {
+    clip-path: polygon(0 80px, 100% 0px, 90% calc(100% - 145px), 0% calc(100% - 100px));
   }
 }
 
 @media screen and (max-width: 960px) {
   .outer {
-    clip-path: polygon(0 0%, 100% 12%, 100% 100%, 45% 83%, 0% 88%);
-    margin-bottom: 0px;
+    clip-path: polygon(0 0%, 100% 80px, 100% 100%, 45% calc(100% - 100px), 0% calc(100% - 75px));
+    margin-bottom: -56px;
   }
 
   .inner {
-    clip-path: polygon(0 0%, 100% 12%, 100% 100%, 45% 83%, 0% 88%);
-    padding-bottom: 60px;
+    clip-path: polygon(0 0%, 100% 80px, 100% 100%, 45% calc(100% - 100px), 0% calc(100% - 75px));
+    padding-bottom: 140px;
     margin-bottom: 12px;
   }
-}
-
-@media screen and (max-width: 960px) {
-
   .content {
     padding-top: 80px;
   }
-
-  .inner {
-      padding-bottom: 140px;
-  }
+  
 
 }
+
+

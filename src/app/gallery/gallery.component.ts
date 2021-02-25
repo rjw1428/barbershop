@@ -68,7 +68,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     this.activeIndex = (this.activeIndex + 1) % this.images.length
     this.mainGallery.nativeElement.style.marginLeft = `${this.offsetCount}vw`
     this.upperRow.nativeElement.style.marginLeft = `${this.offsetCount * 2}vw`
-    this.lowerRow.nativeElement.style.marginRight = `${this.offsetCount * 2}vw`
+    this.lowerRow.nativeElement.style.marginRight = `${this.offsetCount * 2 + this.itemMargin}vw`
 
     setTimeout(() => {
       const shiftItem = this.images[0]
@@ -81,7 +81,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
       this.upperRow.nativeElement.style.marginLeft = `${this.offsetCount * 0 - this.itemMargin}vw`
 
       this.lowerRow.nativeElement.style.transitionProperty = 'none'
-      this.lowerRow.nativeElement.style.marginRight = `${this.offsetCount * 0 - this.itemMargin}vw`
+      this.lowerRow.nativeElement.style.marginRight = `${this.offsetCount * 0 }vw`
       this.offsetCount = 0
     }, 1500)
     // console.log(this.activeIndex)

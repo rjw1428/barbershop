@@ -7,8 +7,8 @@
 }
 
 .outer {
-  clip-path: polygon(0 43px, 45% 0, 100% 150px, 100% calc(100% - 50px), 32% 99%, 0 calc(100% - 50px));
-  margin: 0px 20px -30px 20px;
+  clip-path: polygon(0 100px, 45% 0, 100% 150px, 100% calc(100% - 50px), 32% 99%, 0 calc(100% - 50px));
+  margin: 0px 20px -35px 20px;
   position: relative;
   background-color: black;
   padding-bottom: 10px;
@@ -16,7 +16,7 @@
 
 .inner {
   background: rgb(41, 114, 182);
-  clip-path: polygon(0 43px, 45% 0, 100% 150px, 100% calc(100% - 50px), 32% 99%, 0 calc(100% - 50px));
+  clip-path: polygon(0 100px, 45% 0, 100% 150px, 100% calc(100% - 50px), 32% 99%, 0 calc(100% - 50px));
   left: 5px;
   right: 5px;
   top: 5px;
@@ -49,6 +49,17 @@
   transition-duration: 1s;
 }
 
+@media screen and (max-width: 1200px) {
+  .inner {
+    clip-path: polygon(0 50px, 45% 0, 100% 150px, 100% calc(100% - 50px), 32% 99%, 0 calc(100% - 50px));
+  }
+
+  .outer {
+    clip-path: polygon(0 50px, 45% 0, 100% 150px, 100% calc(100% - 50px), 32% 99%, 0 calc(100% - 50px));
+    margin-top: 100px;
+  }
+}
+
 @media screen and (max-width: 960px) {
   .gallery {
     display: none;
@@ -61,21 +72,20 @@
   .title {
     top: 24px;
   }
-}
 
-@media screen and (max-width: 600px) {
   .inner {
-    clip-path: polygon(0 48px, 45% 10px, 100% 150px, 100% calc(100% - 50px), 32% 99%, 0 calc(100% - 50px));
-
+    clip-path: polygon(0 25px, 45% 0, 100% 100px, 100% calc(100% - 50px), 32% 99%, 0 calc(100% - 50px));
   }
 
   .outer {
-    clip-path: polygon(0 48px, 45% 10px, 100% 150px, 100% calc(100% - 50px), 32% 99%, 0 calc(100% - 50px));
+    clip-path: polygon(0 25px, 45% 0, 100% 100px, 100% calc(100% - 50px), 32% 99%, 0 calc(100% - 50px));
   }
 
+}
+
+@media screen and (max-width: 600px) {
   .title {
     top: 36px;
     left: -50px;
   }
 }
-

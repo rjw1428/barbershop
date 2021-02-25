@@ -6,11 +6,6 @@
   display: flex;
 }
 
-// .break-panel {
-//   display: none;
-// }
-
-
 .team {
   flex-basis: 50%;
 }
@@ -62,17 +57,6 @@
     flex-direction: column;
   }
 
-  // .break-panel-wide {
-  //   display: none;
-  // }
-
-  // .break-panel-narrow {
-  //   display: flex;
-  // }
-
-  // .break-panel {
-  //   display: block;
-  // }
 }
 
 @media screen and (max-width: 960px) {

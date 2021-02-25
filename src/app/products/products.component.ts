@@ -14,11 +14,11 @@ export class ProductsComponent implements OnInit {
     },
     {
       name: "Beard Trim",
-      price: 40
+      price: 30
     },
     {
       name: "Men's Cut and Beard Trim",
-      price: 40
+      price: 60
     },
     {
       name: "Men's Cut and Shave",
@@ -26,39 +26,39 @@ export class ProductsComponent implements OnInit {
     },
     {
       name: "Shave",
-      price: 40
+      price: 60
     },
     {
       name: "Clipper Cut",
-      price: 40
+      price: 30
     },
     {
       name: "Kid's Cut (10 and under)",
-      price: 40
+      price: 30
     },
     {
       name: "Women's Cut",
-      price: 40
+      price: 50
     },
     {
       name: "Clipper Cut and Beard Trim",
-      price: 40
+      price: 50
     },
     {
       name: "Men's Long Hair Cut",
-      price: 40
+      price: 50
     },
     {
       name: "Head Shave and Face Shave",
-      price: 40
+      price: 85
     },
     {
       name: "Men's Long Hair and Beard Trim",
-      price: 40
+      price: 85
     },
     {
       name: "Head Shave and Beard Trim",
-      price: 40
+      price: 85
     }
     
   ]
