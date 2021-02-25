@@ -146,12 +146,13 @@ h3 {
 @media screen and (max-width: 960px) {
   .container {
     height: 60vh;
-    min-height: 300px;
+    min-height: 400px;
   }
 
   .frame {
     // padding-top: 25vh;
     height: 60vh;
+    min-height: 400px;
   }
 
   #main-barbershop {
@@ -172,6 +173,7 @@ h3 {
 
   .header-content {
     height: 60vh;
+    min-height: 400px;
   }
 
   h1 {
@@ -204,11 +206,11 @@ h3 {
 .animateIn {
   animation: adjustPanel .5s ease-in-out both;
 }
-
 .tooNarrow {
   animation: unset;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 160px), 0% 100%);
 }
+
 
 // .dimLights {
 //   animation: fadeBackground .5 ease-in-out both;

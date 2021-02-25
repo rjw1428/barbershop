@@ -34,8 +34,8 @@ $interview-theme: mat-light-theme((
 @include angular-material-theme($interview-theme);
 
 /* You can add global styles to this file, and also import other style files */
-@import url(//fonts.googleapis.com/css2?family=Quattrocento&Dekko&family=Montserrat:wght@100;400&display=swap);
-@import url(//fonts.googleapis.com/css?family=Patrick+Hand+SC|Bangers|Happy+Monkey);
+// @import url(//fonts.googleapis.com/css2?family=Quattrocento&Dekko&family=Montserrat:wght@100;400&display=swap);
+// @import url(//fonts.googleapis.com/css?family=Patrick+Hand+SC|Bangers|Happy+Monkey);
 
 @font-face { font-family: Pirulen; src: url(assets/fonts/PirulenRg-Regular.woff) format("woff"); }
 
@@ -48,7 +48,9 @@ $interview-theme: mat-light-theme((
  SECTION HEADERS -> BANGERS
  BODY FONT -> Montserrat
 */
-
+* {
+    -webkit-overflow-scrolling: touch;
+}
 
 :root {
   --button-bg: rgba(41, 114, 182, 0.6);
@@ -89,4 +91,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   // background:  rgba(255,255,255,.9) !important;
   border: 5px solid black;
   border-radius: 0;
+}
+
+
+@media screen and (max-width: 550px) {
+  .cdk-overlay-pane {
+    max-width: 100vw !important;
+  }
 }

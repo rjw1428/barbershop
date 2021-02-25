@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Member } from '../models/member';
 import { Popup } from '../models/popup';
@@ -7,7 +7,8 @@ import { TeamPopupComponent } from './team-popup/team-popup.component';
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
-  styleUrls: ['./team.component.scss']
+  styleUrls: ['./team.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TeamComponent implements OnInit, AfterViewInit {
   members: Member[] = [{

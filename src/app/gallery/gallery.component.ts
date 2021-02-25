@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-gallery',
@@ -16,10 +16,11 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     "assets/media/gallery7.jpg",
     "assets/media/gallery8.jpg"
   ]
-  // displayImages = []
   @ViewChild('gallery') mainGallery: ElementRef;
   @ViewChild('upperRow') upperRow: ElementRef;
   @ViewChild('lowerRow') lowerRow: ElementRef;
+  @ViewChild('content') content: ElementRef
+  triggerAnimation = false
   offsetCount = 0
   itemWidth = 15
   itemMargin = 2
@@ -28,14 +29,27 @@ export class GalleryComponent implements OnInit, AfterViewInit {
   interval: any
   continueAutoplayTimeout: any
   constructor() {
-    // this.displayImages = [...this.images, ...this.images]
   }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit() {
+    this.shouldAnimate(window)
     this.startAutoplay()
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    const window = event.target.defaultView
+    this.shouldAnimate(window)
+  }
+
+  shouldAnimate(window: Window) {
+    const top = this.content.nativeElement.getBoundingClientRect().y
+    const screenHeigth = window.innerHeight
+    if (top < screenHeigth)
+      setTimeout(()=>this.triggerAnimation = true)
   }
 
   onPrevious() {

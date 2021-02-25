@@ -1,3 +1,4 @@
+import { ChangeDetectionStrategy } from '@angular/core';
 import { Component, ElementRef, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EventEmitter } from 'events';
@@ -7,7 +8,7 @@ import { TeamPopupComponent } from 'src/app/team/team-popup/team-popup.component
 @Component({
   selector: 'app-gallery-image',
   templateUrl: './gallery-image.component.html',
-  styleUrls: ['./gallery-image.component.scss']
+  styleUrls: ['./gallery-image.component.scss'],
 })
 export class GalleryImageComponent implements OnInit, OnChanges {
   @Input() image: string

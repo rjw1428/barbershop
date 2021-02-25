@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+  styleUrls: ['./about.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AboutComponent implements OnInit, AfterViewInit {
   @ViewChild('content') content: ElementRef

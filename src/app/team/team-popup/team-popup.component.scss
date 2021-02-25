@@ -22,14 +22,14 @@ button:focus {
   outline: none;
 }
 
-img {
-//   // border: 5px solid black;
-//   box-shadow: 2px 2px 5px black;
-    // width: 100%;
-    // height: auto;
-    // max-height: 60vh;
-    // max-width: auto;
-}
+// img {
+// //   // border: 5px solid black;
+// //   box-shadow: 2px 2px 5px black;
+//     // width: 100%;
+//     // height: auto;
+//     // max-height: 60vh;
+//     // max-width: auto;
+// }
 
 .container {
   height: 80vh;
@@ -47,9 +47,9 @@ img {
 }
 
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 550px) {
     .container {
-      width: 60vw;
+      width: 84vw;
       max-height: 80vh;
       height: 50vh;
     }

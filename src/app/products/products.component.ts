@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Product } from '../models/product';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsComponent implements OnInit, AfterViewInit {
   products: Product[] = [
@@ -64,13 +65,13 @@ export class ProductsComponent implements OnInit, AfterViewInit {
 
   @ViewChild('content') content: ElementRef
   triggerAnimation = false
-  constructor() { }
+  constructor(private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit() {
-    this.shouldAnimate(window)
+    this.shouldAnimate(window, true)
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -86,12 +87,15 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     this.shouldAnimate(window)
   }
 
-  shouldAnimate(window: Window) {
+  shouldAnimate(window: Window, isFirst?: boolean) {
     const top = this.content.nativeElement.getBoundingClientRect().y
     const screenHeigth = window.innerHeight
     const screenWidth = window.innerWidth
     const screenOffset = window.pageYOffset
     if (screenOffset > 0 || top < screenHeigth || screenWidth < 960)
-      setTimeout(() => this.triggerAnimation = true)
+      setTimeout(() => {
+        this.triggerAnimation = true
+        if (isFirst) this.ref.detectChanges()
+      })
   }
 }

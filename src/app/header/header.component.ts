@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
   @ViewChild('menu') navMenu: ElementRef
@@ -14,15 +15,19 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   triggerAnimation = false
   isTooNarrow = true
   constructor(
-    private service: ServiceService
+    private service: ServiceService,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit() {
-    this.shouldAnimate(window)
-    setTimeout(() => this.isTooNarrow = window.innerWidth < 960)
+    this.shouldAnimate(window, true)
+    setTimeout(() => {
+      this.isTooNarrow = window.innerWidth < 960
+      this.ref.detectChanges()
+    })
   }
 
 
@@ -38,9 +43,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.shouldAnimate(window)
   }
 
-  shouldAnimate(window: Window) {
+  shouldAnimate(window: Window, isFirst?: boolean) {
     if (window.pageYOffset > 0 || window.innerWidth < 960)
-      setTimeout(() => this.triggerAnimation = true)
+      setTimeout(() => {
+        this.triggerAnimation = true
+        if (isFirst) this.ref.detectChanges()
+      })
 
     // window.pageYOffset > 0
     //   ? setTimeout(() => this.triggerAnimation = true)

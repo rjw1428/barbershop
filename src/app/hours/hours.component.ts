@@ -1,11 +1,12 @@
-import { AfterViewInit, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Hours } from '../models/hours';
 
 @Component({
   selector: 'app-hours',
   templateUrl: './hours.component.html',
-  styleUrls: ['./hours.component.scss']
+  styleUrls: ['./hours.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HoursComponent implements OnInit, AfterViewInit {
   hours: Hours[] = [{
