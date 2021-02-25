@@ -202,6 +202,11 @@ h3 {
   animation: adjustPanel .7s ease-in-out both;
 }
 
+.tooNarrow {
+  animation: unset;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 160px), 0% 100%);
+}
+
 // .dimLights {
 //   animation: fadeBackground .5 ease-in-out both;
 // }

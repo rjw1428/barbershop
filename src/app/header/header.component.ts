@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   @Output() onScroll = new EventEmitter<string>()
   @ViewChild('content') content: ElementRef
   triggerAnimation = false
+  isTooNarrow = true
   constructor(
     private service: ServiceService
   ) { }
@@ -21,6 +22,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.shouldAnimate(window)
+    setTimeout(() => this.isTooNarrow = window.innerWidth < 960)
   }
 
 

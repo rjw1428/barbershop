@@ -39,7 +39,7 @@
   <div class="hidden-layer" #other (click)="onClose()"></div>
 
 
-  <div class="frame"   [ngClass]="{'animateIn': triggerAnimation}">
+  <div class="frame" [ngClass]="{'animateIn': triggerAnimation, 'tooNarrow': isTooNarrow}">
     <video [autoplay]="true" loop [muted]="true" playsinline>
       <source src="../../assets/media/vid1.mp4" type="video/mp4" poster='../../assets/media/video_bg_2.png'>
     </video>
