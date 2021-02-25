@@ -6,9 +6,9 @@
   display: flex;
 }
 
-.break-panel {
-  display: none;
-}
+// .break-panel {
+//   display: none;
+// }
 
 
 .team {
@@ -19,28 +19,64 @@
   flex-basis: 50%;
 }
 
+.contact {
+  flex-basis: 40%;
+}
+
+.about {
+  flex-basis: 35%;
+}
+
+.hours {
+  flex-basis: 60%;
+}
+
 .second-row {
   display: flex;
   padding: 0 20px;
+  margin-bottom: -130px;
   justify-content: space-between;
 }
 
+.container {
+  display: flex;
+  flex-basis: 65%;
+}
+
 @media screen and (max-width: 1400px) {
-  .break-panel-wide {
-    display: none;
+  .hours {
+    flex-basis: 70%;
   }
 
-  .break-panel-narrow {
+  .contact {
+    flex-basis: 30%;
+  }
+
+  .container {
     display: flex;
+    flex-direction: row-reverse;
+    flex-basis: 100%;
   }
 
-  .break-panel {
-    display: block;
+  .break-panel-wide {
+    flex-direction: column;
   }
+
+  // .break-panel-wide {
+  //   display: none;
+  // }
+
+  // .break-panel-narrow {
+  //   display: flex;
+  // }
+
+  // .break-panel {
+  //   display: block;
+  // }
 }
 
 @media screen and (max-width: 960px) {
-    .second-row {
-        flex-direction: column-reverse;
-    }
+  .second-row {
+    flex-direction: column-reverse;
+  }
 }

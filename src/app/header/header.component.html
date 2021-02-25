@@ -1,10 +1,10 @@
-<div>
-  <div class="navbar">
+<div class="container">
+  <nav class="navbar">
 
     <div style="flex-basis: 40%; justify-content: flex-start;" class="nav-button">
       <app-nav-button (click)="onNavigate('team')">Our Team</app-nav-button>
-      <app-nav-button (click)="onNavigate('middleLarge')">Hours</app-nav-button>
-      <app-nav-button (click)="onNavigate('middleLarge')">About</app-nav-button>
+      <app-nav-button (click)="onNavigate('hours')">Hours</app-nav-button>
+      <app-nav-button (click)="onNavigate('about')">About</app-nav-button>
     </div>
 
     <div
@@ -18,7 +18,7 @@
       <app-nav-button (click)="onNavigate('gallery')">Gallery</app-nav-button>
       <app-nav-button (click)="onNavigate('location')">Map</app-nav-button>
     </div>
-  </div>
+  </nav>
 
   <div class="menu-toggle">
     <i class="fas fa-bars  fa-2x" (click)="onOpen()"></i>
@@ -29,11 +29,11 @@
       <i style="color: white; " class="fas fa-times" (click)="onClose()"></i>
     </div>
     <h3 class="menu-item" (click)="onNavigate('products')">Services</h3>
-    <h3 class="menu-item" (click)="onNavigate('middleSmall')">Hours</h3>
+    <h3 class="menu-item" (click)="onNavigate('hours')">Hours</h3>
     <h3 class="menu-item" (click)="onNavigate('gallery')">Gallery</h3>
     <h3 class="menu-item" (click)="onNavigate('team')">Our Team</h3>
     <h3 class="menu-item" (click)="onNavigate('about')">About</h3>
-    <h3 class="menu-item" (click)="onNavigate('middleSmall')">Contact Us</h3>
+    <h3 class="menu-item" (click)="onNavigate('contact')">Contact Us</h3>
     <h3 class="menu-item" (click)="onNavigate('location')">Map</h3>
   </div>
   <div class="hidden-layer" #other (click)="onClose()"></div>
@@ -41,13 +41,13 @@
 
   <div class="frame">
     <video [autoplay]="true" loop [muted]="true" playsinline>
-      <source src="../../assets/media/vid1.mp4" type="video/mp4">
+      <source src="../../assets/media/vid1.mp4" type="video/mp4" poster='../../assets/media/video_bg_2.png'>
     </video>
   </div>
 
 
   <div class="header-content"
-    style="display: flex; justify-content: center; height: 100%; align-items: center; flex-direction: column;">
+    style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
     <div class="book-button" (click)="onBook()">
       <h1>BOOK NOW</h1>
     </div>

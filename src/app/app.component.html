@@ -1,29 +1,33 @@
-<div style="display: flex; flex-direction: column; justify-content: center; overflow-x: hidden;">
+<div #top style="display: flex; flex-direction: column; justify-content: center; overflow-x: hidden;">
 
   <app-header (onScroll)="triggerScroll($event)"></app-header>
 
-  <div #top></div>
   <div class="second-row">
-    <app-team class="team"></app-team>
-    <app-products class="products"></app-products>
+    <div #team class="team">
+      <app-team></app-team>
+    </div>
+    <div #products class="products">
+      <app-products></app-products>
+    </div>
   </div>
 
   <div #gallery></div>
-  <app-gallery ></app-gallery>
+  <app-gallery></app-gallery>
 
-  <div style="padding: 0 20px; justify-content: space-between;" class="break-panel-wide" #middleLarge>
-    <app-hours style="flex-basis: 35%;"></app-hours>
-    <app-contact style="flex-basis: 30%;"></app-contact>
-    <app-about style="flex-basis: 35%;"></app-about>
-  </div>
+  <div style="padding: 0 20px; justify-content: space-between;" class="break-panel-wide">
+    <div class="container">
+      <div class="hours" #hours>
+        <app-hours></app-hours>
+      </div>
 
-  <div style="padding: 0 20px; justify-content: space-between;" class="break-panel-narrow" #middleSmall>
-    <app-contact style="flex-basis: 30%;"></app-contact>
-    <app-hours style="flex-basis: 70%;"></app-hours>
-  </div>
+      <div class="contact" #contact>
+        <app-contact></app-contact>
+      </div>
+    </div>
+    <div class="about" #about>
+      <app-about></app-about>
+    </div>
 
-  <div style="padding: 0 20px; " class="break-panel" #about>
-    <app-about></app-about>
   </div>
 
   <div #location></div>
