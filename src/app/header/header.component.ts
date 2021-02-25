@@ -32,6 +32,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.shouldAnimate(window)
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    const window = event.target
+    this.shouldAnimate(window)
+  }
+
   shouldAnimate(window: Window) {
     if (window.pageYOffset > 0 || window.innerWidth < 960)
       setTimeout(() => this.triggerAnimation = true)

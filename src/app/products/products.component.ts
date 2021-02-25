@@ -79,10 +79,19 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     this.shouldAnimate(window)
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    const window = event.target
+    // console.log(event.target)
+    this.shouldAnimate(window)
+  }
+
   shouldAnimate(window: Window) {
     const top = this.content.nativeElement.getBoundingClientRect().y
     const screenHeigth = window.innerHeight
-    if (top < screenHeigth)
-      setTimeout(()=>this.triggerAnimation = true)
+    const screenWidth = window.innerWidth
+    const screenOffset = window.pageYOffset
+    if (screenOffset > 0 || top < screenHeigth || screenWidth < 960)
+      setTimeout(() => this.triggerAnimation = true)
   }
 }

@@ -59,10 +59,18 @@ export class TeamComponent implements OnInit, AfterViewInit {
     this.shouldAnimate(window)
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    const window = event.target
+    this.shouldAnimate(window)
+  }
+
   shouldAnimate(window: Window) {
     const top = this.content.nativeElement.getBoundingClientRect().y
     const screenHeigth = window.innerHeight
-    if (top < screenHeigth)
+    const screenOffset = window.pageYOffset
+    const screenWidth = window.innerWidth
+    if (screenOffset > 0 || top < screenHeigth || screenWidth < 960)
       setTimeout(() => this.triggerAnimation = true)
   }
 
