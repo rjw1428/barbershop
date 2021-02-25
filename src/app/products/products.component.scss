@@ -45,8 +45,10 @@ ul {
   flex-direction: column;
   align-items: center;
   width: 65%;
-  background-color: rgba(0, 0, 0, .8);
-  backdrop-filter: blur(10px);
+  // background-color: rgba(0, 0, 0, .8);
+  background-color: var(--button-bg);
+  backdrop-filter: blur(5px);
+  box-shadow: 10px 10px 25px black;
 }
 
 .title {

@@ -2,9 +2,9 @@
   <div class="navbar">
 
     <div style="flex-basis: 40%; justify-content: flex-start;" class="nav-button">
-      <app-nav-button (click)="panel1()">Our Team</app-nav-button>
-      <app-nav-button (click)="panel3()">Hours</app-nav-button>
-      <app-nav-button (click)="panel3()">About</app-nav-button>
+      <app-nav-button (click)="onNavigate('team')">Our Team</app-nav-button>
+      <app-nav-button (click)="onNavigate('middleLarge')">Hours</app-nav-button>
+      <app-nav-button (click)="onNavigate('middleLarge')">About</app-nav-button>
     </div>
 
     <div
@@ -14,9 +14,9 @@
     </div>
 
     <div style="flex-basis: 40%; justify-content: flex-end;" class="nav-button">
-      <app-nav-button (click)="panel1()">Services</app-nav-button>
-      <app-nav-button (click)="panel2()">Gallery</app-nav-button>
-      <app-nav-button (click)="panel4()">Map</app-nav-button>
+      <app-nav-button (click)="onNavigate('products')">Services</app-nav-button>
+      <app-nav-button (click)="onNavigate('gallery')">Gallery</app-nav-button>
+      <app-nav-button (click)="onNavigate('location')">Map</app-nav-button>
     </div>
   </div>
 
@@ -28,12 +28,13 @@
     <div style="display: flex; justify-content: flex-end; padding: 10px;">
       <i style="color: white; " class="fas fa-times" (click)="onClose()"></i>
     </div>
-    <h3 class="menu-item" (click)="panel1()">Services</h3>
-    <h3 class="menu-item" (click)="panel3()">Hours</h3>
-    <h3 class="menu-item" (click)="panel2()">Gallery</h3>
-    <h3 class="menu-item" (click)="panel1()">Our Team</h3>
-    <h3 class="menu-item" (click)="panel3()">About</h3>
-    <h3 class="menu-item" (click)="panel4()">Map</h3>
+    <h3 class="menu-item" (click)="onNavigate('products')">Services</h3>
+    <h3 class="menu-item" (click)="onNavigate('middleSmall')">Hours</h3>
+    <h3 class="menu-item" (click)="onNavigate('gallery')">Gallery</h3>
+    <h3 class="menu-item" (click)="onNavigate('team')">Our Team</h3>
+    <h3 class="menu-item" (click)="onNavigate('about')">About</h3>
+    <h3 class="menu-item" (click)="onNavigate('middleSmall')">Contact Us</h3>
+    <h3 class="menu-item" (click)="onNavigate('location')">Map</h3>
   </div>
   <div class="hidden-layer" #other (click)="onClose()"></div>
 

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ServiceService } from '../service.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { ServiceService } from '../service.service';
 export class HeaderComponent implements OnInit, AfterViewInit {
   @ViewChild('menu') navMenu: ElementRef
   @ViewChild('other') hiddenLayer: ElementRef
+  @Output() onScroll = new EventEmitter<string>()
+
   constructor(
     private service: ServiceService
   ) { }
@@ -43,41 +45,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.service.email()
   }
 
-  panel1() {
-    window.scrollTo({
-      top: 900,
-      behavior: 'smooth'
-    });
-    this.onClose()
-  }
-
-  panel2() {
-    window.scrollTo({
-      top: 1600,
-      behavior: 'smooth'
-    });
-    this.onClose()
-  }
-
-
-  panel3() {
-    window.scrollTo({
-      top: 2200,
-      behavior: 'smooth'
-    });
-    this.onClose()
-  }
-
-
-  panel4() {
-    window.scrollTo({
-      top: 2600,
-      behavior: 'smooth'
-    });
-    this.onClose()
-  }
-
   onBook() {
     this.service.book()
+  }
+
+  onNavigate(elementId: string) {
+    this.onClose()
+    this.onScroll.emit(elementId)
   }
 }

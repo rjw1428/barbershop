@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ServiceService } from '../service.service';
 
 @Component({
@@ -7,7 +7,8 @@ import { ServiceService } from '../service.service';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  year
+  @Output() onScroll = new EventEmitter<string>()
+  year: number
   constructor(
     private service: ServiceService
   ) { }
@@ -27,38 +28,12 @@ export class FooterComponent implements OnInit {
   onEmail() {
     this.service.email()
   }
-  
-  panel1() {
-    window.scrollTo({
-      top: 900,
-      behavior: 'smooth'
-    });
-  }
-
-  panel2() {
-    window.scrollTo({
-      top: 1600,
-      behavior: 'smooth'
-    });
-  }
-
-
-  panel3() {
-    window.scrollTo({
-      top: 2200,
-      behavior: 'smooth'
-    });
-  }
-
-
-  panel4() {
-    window.scrollTo({
-      top: 2600,
-      behavior: 'smooth'
-    });
-  }
 
   onBook() {
     this.service.book()
+  }
+
+  onNavigate(elementId: string) {
+    this.onScroll.emit(elementId)
   }
 }

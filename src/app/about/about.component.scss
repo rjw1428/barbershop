@@ -55,6 +55,7 @@
   padding-right: 40px;
   padding-top: 20px;
   padding-bottom: 24px;
+  
 }
 
 .bg {
@@ -72,13 +73,13 @@
 
 .frame {
   width: 80%;
-  background-color: rgba(0, 0, 0, .5);
   padding: 24px;
   margin-top: -24px;
   position: relative;
   z-index: 1;
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, .5);
+  box-shadow: 10px 10px 25px black;
 }
 
 .title {
