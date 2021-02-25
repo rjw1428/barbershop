@@ -26,11 +26,6 @@ export class GalleryImageComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    // if (this.active - 2 == this.index && ![0, 1].includes(this.active)) {
-    //   console.log("MOVE: " + this.index)
-      // if (this.element) 
-      //   this.element.nativeElement.style.marginLeft = '10vw'//(this.total - 2) * (this.width + this.margin)
-    // }
   }
 
   onClick() {

@@ -25,7 +25,6 @@ export class AppComponent implements AfterViewInit {
 
   triggerScroll(elementName: string) {
     let element: ElementRef
-    console.log(elementName)
     switch (elementName) {
       case 'team':
         element = this.teamEl
@@ -38,7 +37,6 @@ export class AppComponent implements AfterViewInit {
         break;
       case 'contact':
         element = this.concactEl
-        
         break;
       case 'hours':
         element = this.hoursEl
@@ -50,8 +48,6 @@ export class AppComponent implements AfterViewInit {
         element = this.locationEl
         break;
     }
-
-    console.log(element.nativeElement)
     element.nativeElement.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
   }
 }

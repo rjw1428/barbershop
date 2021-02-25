@@ -63,10 +63,7 @@ export class TeamComponent implements OnInit, AfterViewInit {
     const top = this.content.nativeElement.getBoundingClientRect().y
     const screenHeigth = window.innerHeight
     if (top < screenHeigth)
-      setTimeout(() => {
-        this.triggerAnimation = true
-        console.log(this.triggerAnimation)
-      })
+      setTimeout(() => this.triggerAnimation = true)
   }
 
   onSelected(member: Member) {

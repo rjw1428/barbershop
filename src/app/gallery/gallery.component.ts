@@ -84,16 +84,6 @@ export class GalleryComponent implements OnInit, AfterViewInit {
       this.lowerRow.nativeElement.style.marginRight = `${this.offsetCount * 0 }vw`
       this.offsetCount = 0
     }, 1500)
-    // console.log(this.activeIndex)
-    // if (this.activeIndex == 0) {
-    //   console.log("TARGET")
-    //   setTimeout(() => {
-    //     this.slider.nativeElement.style.transitionProperty = 'none'
-    //     this.slider.nativeElement.style.marginLeft = 0
-    //     this.offsetCount = 0
-    //     console.log("AQUIRED")
-    //   }, this.continueAutoplayTimeout ? 1500 : 0)
-    // }
   }
 
   movePrev() {
