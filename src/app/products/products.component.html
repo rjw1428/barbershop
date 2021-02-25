@@ -1,6 +1,6 @@
-<div class="outer">
+<div class="outer"  [ngClass]="{'animateIn': triggerAnimation}">
   <div class="inner bg">
-    <div class="content">
+    <div class="content" #content>
       <h1 class="title">SERVICES</h1>
       <ul style="margin: 0; padding: 0;">
         <li *ngFor="let product of products">

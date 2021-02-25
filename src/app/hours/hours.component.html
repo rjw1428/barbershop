@@ -1,10 +1,10 @@
 <div class="outer">
   <div class="inner">
     <div class="bg"></div>
-    <div class="content">
+    <div class="content"  #content >
       <h1 class="title">HOURS</h1>
       <ul style="margin: 0; padding: 0; width: 80%;">
-        <li *ngFor="let hour of hours">
+        <li *ngFor="let hour of hours" [ngClass]="{'animateIn': triggerAnimation}">
           <div class="list-item" style="display: flex; justify-content: space-between">
             <p class="day-long">{{hour.day}}: </p>
             <p class="day-short">{{hour.dayShort}}: </p>

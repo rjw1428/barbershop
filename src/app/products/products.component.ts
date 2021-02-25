@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Product } from '../models/product';
 
 @Component({
@@ -6,7 +6,7 @@ import { Product } from '../models/product';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, AfterViewInit {
   products: Product[] = [
     {
       name: "Men's Cut",
@@ -60,11 +60,29 @@ export class ProductsComponent implements OnInit {
       name: "Head Shave and Beard Trim",
       price: 85
     }
-    
   ]
+
+  @ViewChild('content') content: ElementRef
+  triggerAnimation = false
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    this.shouldAnimate(window)
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    const window = event.target.defaultView
+    this.shouldAnimate(window)
+  }
+
+  shouldAnimate(window: Window) {
+    const top = this.content.nativeElement.getBoundingClientRect().y
+    const screenHeigth = window.innerHeight
+    if (top < screenHeigth)
+      setTimeout(()=>this.triggerAnimation = true)
+  }
 }

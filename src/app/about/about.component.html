@@ -1,8 +1,8 @@
 <div class="outer">
   <div class="inner bg">
-    <div class="content">
+    <div class="content" #content >
       <h1 class="title">ABOUT</h1>
-      <div class="frame">
+      <div class="frame" [ngClass]="{'animateIn': triggerAnimation}">
         <p>Barber Shop Denim™ is a lifestyle grooming experience located on South Street in the heart of Center City
           Philadelphia.
           We specialize in men's and women's hair cuts, hot shaves, buzz cuts, beard trims, and kid's cuts.

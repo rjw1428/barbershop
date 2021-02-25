@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Member } from '../models/member';
 import { Popup } from '../models/popup';
@@ -9,7 +9,7 @@ import { TeamPopupComponent } from './team-popup/team-popup.component';
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss']
 })
-export class TeamComponent implements OnInit {
+export class TeamComponent implements OnInit, AfterViewInit {
   members: Member[] = [{
     name: "Chris Cahill",
     position: "Owner & Barber",
@@ -40,13 +40,34 @@ export class TeamComponent implements OnInit {
     position: "Management & Scheduling",
     img: "/assets/media/haley.png"
   }]
+  @ViewChild('content') content: ElementRef
+  triggerAnimation = false
   constructor(
     private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
   }
+  ngAfterViewInit() {
+    this.shouldAnimate(window)
+  }
 
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    const window = event.target.defaultView
+    this.shouldAnimate(window)
+  }
+
+  shouldAnimate(window: Window) {
+    const top = this.content.nativeElement.getBoundingClientRect().y
+    const screenHeigth = window.innerHeight
+    if (top < screenHeigth)
+      setTimeout(() => {
+        this.triggerAnimation = true
+        console.log(this.triggerAnimation)
+      })
+  }
 
   onSelected(member: Member) {
     this.dialog.open(TeamPopupComponent, {

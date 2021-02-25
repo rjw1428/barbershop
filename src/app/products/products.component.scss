@@ -20,9 +20,9 @@ ul {
   clip-path: polygon(13% 80px, 100% 0%, 100% 100%, 4% calc(100% - 145px));
   margin-top: -145px;
   margin-left: -12%;
-
   height: calc(100% + 145px);
   background-color: black;
+  opacity: 0;
 }
 
 .inner {
@@ -108,6 +108,23 @@ ul {
     width: 100%;
   }
 }
+
+
+.animateIn {
+  animation: fadeRight .7s ease-in-out both;
+}
+
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+    transform: translate(20%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px);
+  }
+}
+
 
 // @media screen and (max-width: 700px) {
 //   ul {

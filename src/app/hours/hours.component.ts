@@ -1,3 +1,4 @@
+import { AfterViewInit, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Hours } from '../models/hours';
 
@@ -6,7 +7,7 @@ import { Hours } from '../models/hours';
   templateUrl: './hours.component.html',
   styleUrls: ['./hours.component.scss']
 })
-export class HoursComponent implements OnInit {
+export class HoursComponent implements OnInit, AfterViewInit {
   hours: Hours[] = [{
     day: "Monday",
     dayShort: "Mon",
@@ -50,9 +51,26 @@ export class HoursComponent implements OnInit {
     close: "",
     closed: true
   }]
+  @ViewChild('content') content: ElementRef
+  triggerAnimation = false
   constructor() { }
 
   ngOnInit(): void {
   }
+  ngAfterViewInit() {
+    this.shouldAnimate(window)
+  }
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    const window = event.target.defaultView
+    this.shouldAnimate(window)
+  }
+
+  shouldAnimate(window: Window) {
+    const top = this.content.nativeElement.getBoundingClientRect().y
+    const screenHeigth = window.innerHeight
+    if (top < screenHeigth)
+      setTimeout(() => this.triggerAnimation = true)
+  }
 }

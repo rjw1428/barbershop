@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { ServiceService } from '../service.service';
 
 @Component({
@@ -10,7 +10,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   @ViewChild('menu') navMenu: ElementRef
   @ViewChild('other') hiddenLayer: ElementRef
   @Output() onScroll = new EventEmitter<string>()
-
+  @ViewChild('content') content: ElementRef
+  triggerAnimation = false
   constructor(
     private service: ServiceService
   ) { }
@@ -18,7 +19,24 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit() {
+    this.shouldAnimate(window)
+  }
+
+
+  @HostListener('window:scroll', ['$event'])
+  onScrollEvent(event) {
+    const window = event.target.defaultView
+    this.shouldAnimate(window)
+  }
+
+  shouldAnimate(window: Window) {
+    if (window.pageYOffset > 0 || window.innerWidth < 960)
+      setTimeout(() => this.triggerAnimation = true)
+
+    // window.pageYOffset > 0
+    //   ? setTimeout(() => this.triggerAnimation = true)
+    //   : setTimeout(() => this.triggerAnimation = false)
   }
 
   onOpen() {
