@@ -107,6 +107,11 @@
   animation: fadeUp .7s ease-in forwards;
 }
 
+.tooNarrow {
+  animation: unset;
+  opacity: 1;
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;

@@ -21,6 +21,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
   @ViewChild('lowerRow') lowerRow: ElementRef;
   @ViewChild('content') content: ElementRef
   triggerAnimation = false
+  isTooNarrow = true
   offsetCount = 0
   itemWidth = 15
   itemMargin = 2
@@ -36,6 +37,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.shouldAnimate(window)
+    setTimeout(() => this.isTooNarrow = window.innerWidth < 960)
     this.startAutoplay()
   }
 

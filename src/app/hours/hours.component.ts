@@ -25,7 +25,7 @@ export class HoursComponent implements OnInit, AfterViewInit {
     day: "Wednesday",
     dayShort: "Wed",
     open: "9:00am",
-    close: "7:00pm",
+    close: "6:30pm",
     closed: false
   }, {
     day: "Thursday",

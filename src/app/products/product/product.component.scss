@@ -1,7 +1,15 @@
-
+p,
 h3 {
   font-size: 20px;
-  text-shadow: 1px 1px 1px black;
+  text-shadow: 2px 2px 5px black;
+  font-weight: 800;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
 }
 
 
@@ -9,6 +17,7 @@ h3 {
   h3 {
     font-size: 1.2em;
   }
+
   p {
     font-size: 1em;
   }
@@ -16,17 +25,23 @@ h3 {
 
 
 @media screen and (max-width: 1000px) {
-  h3 {
-    font-size: 1em;
-  }
-  p {
-    font-size: .7em;
-  }
+  // h3 {
+  //   font-size: 1em;
+  // }
+
+  // p {
+  //   font-size: .7em;
+  // }
+
 }
 
 
 @media screen and (max-width: 600px) {
-    h3 {
-        font-size: .7em;
-      }
+  // h3 {
+  //   font-size: .7em;
+  // }
+  .item {
+    margin-top: .5em;
+    margin-bottom: .5em;
+  }
 }

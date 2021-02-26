@@ -32,12 +32,12 @@ export class TeamComponent implements OnInit, AfterViewInit {
     img: "/assets/media/brian.jpeg"
   },
   {
-    name: "Rachael",
+    name: "Rachael Opdenaker",
     position: "Management & Scheduling",
     img: "/assets/media/rachael.png"
   },
   {
-    name: "Haley",
+    name: "Haley Welch",
     position: "Management & Scheduling",
     img: "/assets/media/haley.png"
   }]

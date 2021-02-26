@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Product } from '../models/product';
 
 @Component({
@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     },
     {
       name: "Men's Cut and Shave",
-      price: 40
+      price: 85
     },
     {
       name: "Shave",
@@ -51,7 +51,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     },
     {
       name: "Head Shave and Face Shave",
-      price: 85
+      price: 100
     },
     {
       name: "Men's Long Hair and Beard Trim",
@@ -64,8 +64,12 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   ]
 
   @ViewChild('content') content: ElementRef
+  @ViewChild('bg') bg: ElementRef
   triggerAnimation = false
-  constructor(private ref: ChangeDetectorRef) { }
+  constructor(
+    private ref: ChangeDetectorRef,
+    private renderer: Renderer2
+  ) { }
 
   ngOnInit(): void {
   }
@@ -76,8 +80,9 @@ export class ProductsComponent implements OnInit, AfterViewInit {
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
-    const window = event.target.defaultView
+    const window = event.target.defaultView as Window
     this.shouldAnimate(window)
+    // this.renderer.setStyle(this.bg.nativeElement, 'background-position', `center ${window.scrollY - 300}px`);
   }
 
   @HostListener('window:resize', ['$event'])
