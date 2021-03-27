@@ -1,5 +1,10 @@
 import { AfterViewInit, ChangeDetectionStrategy, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppActions } from '../app.action-types';
+import { hoursSelector } from '../app.selectors';
+import { AppState } from '../models/appState';
 import { Hours } from '../models/hours';
 
 @Component({
@@ -9,55 +14,17 @@ import { Hours } from '../models/hours';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HoursComponent implements OnInit, AfterViewInit {
-  hours: Hours[] = [{
-    day: "Monday",
-    dayShort: "Mon",
-    open: "",
-    close: "",
-    closed: true
-  }, {
-    day: "Tuesday",
-    dayShort: "Tue",
-    open: "",
-    close: "",
-    closed: true
-  }, {
-    day: "Wednesday",
-    dayShort: "Wed",
-    open: "9:00am",
-    close: "6:30pm",
-    closed: false
-  }, {
-    day: "Thursday",
-    dayShort: "Thur",
-    open: "9:00am",
-    close: "7:00pm",
-    closed: false
-  }, {
-    day: "Friday",
-    dayShort: "Fri",
-    open: "9:00am",
-    close: "7:00pm",
-    closed: false
-  }, {
-    day: "Saturday",
-    dayShort: "Sat",
-    open: "9:00am",
-    close: "3:00pm",
-    closed: false
-  }, {
-    day: "Sunday",
-    dayShort: "Sun",
-    open: "",
-    close: "",
-    closed: true
-  }]
+  hours$ = this.store.select(hoursSelector)
   @ViewChild('content') content: ElementRef
   triggerAnimation = false
-  constructor() { }
+  constructor(
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit(): void {
+    this.store.dispatch(AppActions.fetchHours())
   }
+
   ngAfterViewInit() {
     this.shouldAnimate(window)
   }
@@ -73,5 +40,9 @@ export class HoursComponent implements OnInit, AfterViewInit {
     const screenHeigth = window.innerHeight
     if (top < screenHeigth)
       setTimeout(() => this.triggerAnimation = true)
+  }
+
+  identify(index: number, item: Hours) {
+    return item.day
   }
 }

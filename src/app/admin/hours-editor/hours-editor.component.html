@@ -1,0 +1,22 @@
+<section style="display: flex; justify-content: center; padding: 2em 1em;">
+  <mat-card style="min-width: 300px;">
+    <mat-card-header>
+      <mat-card-title>Hours Editor</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list role="list">
+        <mat-list-item *ngFor="let hours of hours$ | async; trackBy: identify">
+          <h3 style="color: black; font-weight: 700;" mat-line>{{hours.day}}</h3>
+          <div mat-line *ngIf="hours.closed; else open" style="text-align: center;">CLOSED</div>
+          <ng-template #open>
+            <div mat-line style="text-align: center;">{{hours.open}} - {{hours.close}}</div>
+          </ng-template>
+          <button mat-icon-button color="primary" (click)="onEdit(hours)">
+            <mat-icon>mode_edit</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+  </mat-card>
+</section>

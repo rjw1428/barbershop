@@ -1,0 +1,12 @@
+<h1 style="color: black">{{data.title}}</h1>
+
+<mat-card-content #content>
+</mat-card-content>
+
+<mat-card-actions>
+  <div style="display: flex; justify-content: center;">
+    <button mat-raised-button color="warn" mat-dialog-close>Back</button>
+    <button *ngIf="data.actionLabel" mat-raised-button color="primary"
+      (click)="triggerAction()">{{data.actionLabel}}</button>
+  </div>
+</mat-card-actions>

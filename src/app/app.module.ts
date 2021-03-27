@@ -21,6 +21,16 @@ import { ContactComponent } from './contact/contact.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TeamPopupComponent } from './team/team-popup/team-popup.component';
 import { GalleryImageComponent } from './gallery/gallery-image/gallery-image.component';
+import { HomeComponent } from './home/home.component';
+import { AngularFireModule } from '@angular/fire';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { appReducer } from './app.reducer';
+import { AppEffects } from './app.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +47,8 @@ import { GalleryImageComponent } from './gallery/gallery-image/gallery-image.com
     ProductComponent,
     ContactComponent,
     TeamPopupComponent,
-    GalleryImageComponent
+    GalleryImageComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +56,18 @@ import { GalleryImageComponent } from './gallery/gallery-image/gallery-image.com
     HttpClientModule,
     MatDialogModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    StoreModule.forRoot({ app: appReducer }, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        strictActionSerializability: true
+      }
+    }),
+    EffectsModule.forRoot([AppEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [ServiceService],
   bootstrap: [AppComponent]

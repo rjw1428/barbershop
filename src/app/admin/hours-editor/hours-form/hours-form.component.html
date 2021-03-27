@@ -1,0 +1,23 @@
+<h1 style="color: black">Edit {{hours.day}}</h1>
+<mat-dialog-content>
+  <form [formGroup]="hoursForm" style="display: flex; flex-direction: column;">
+    <mat-form-field appearance="outline">
+      <mat-label>Open</mat-label>
+      <input name="openTime" matInput formControlName="open">
+      <mat-error *ngIf="hoursForm.invalid">Must include an open time</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Close</mat-label>
+      <input name="closeTime" matInput formControlName="close">
+      <mat-error *ngIf="hoursForm.invalid">Must include a close time</mat-error>
+    </mat-form-field>
+    <mat-checkbox formControlName="closed" (change)="onCheck($event)">Closed</mat-checkbox>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions style="display: flex; flex-direction: column; align-items: center;">
+  <p style="color: red; font-weight: 700;" *ngIf="error">{{error}}</p>
+  <div style="display: flex; justify-content: center;">
+    <button mat-flat-button color="warn" mat-dialog-close>Cancel</button>
+    <button mat-flat-button color="primary" (click)="onSave()">Save</button>
+  </div>
+</mat-dialog-actions>

@@ -1,0 +1,68 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AdminComponent } from './admin.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AboutEditorComponent } from './about-editor/about-editor.component';
+import { ProductsEditorComponent } from './products-editor/products-editor.component';
+import { HoursEditorComponent } from './hours-editor/hours-editor.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProductFormComponent } from './products-editor/product-form/product-form.component';
+import { GenericPopupComponent } from './generic-popup/generic-popup.component';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { AdminEffects } from './admin.effects';
+import { adminReducer } from './admin.reducer';
+import { HoursFormComponent } from './hours-editor/hours-form/hours-form.component';
+import { AboutFormComponent } from './about-editor/about-form/about-form.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: AdminComponent,
+    pathMatch: 'full',
+  }
+]
+
+
+@NgModule({
+  declarations: [
+    AdminComponent,
+    AboutEditorComponent,
+    ProductsEditorComponent,
+    HoursEditorComponent,
+    ProductFormComponent,
+    GenericPopupComponent,
+    HoursFormComponent,
+    AboutFormComponent
+  ],
+  imports: [
+    CommonModule,
+    MatTabsModule,
+    MatCardModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatListModule,
+    MatSnackBarModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('admin', adminReducer),
+    EffectsModule.forFeature([AdminEffects])
+  ]
+})
+export class AdminModule { }

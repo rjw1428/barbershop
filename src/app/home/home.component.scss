@@ -1,0 +1,67 @@
+.break-panel-narrow {
+    display: none;
+  }
+  
+  .break-panel-wide {
+    display: flex;
+  }
+  
+  .team {
+    flex-basis: 50%;
+  }
+  
+  .products {
+    flex-basis: 50%;
+  }
+  
+  .contact {
+    flex-basis: 40%;
+  }
+  
+  .about {
+    flex-basis: 35%;
+  }
+  
+  .hours {
+    flex-basis: 60%;
+  }
+  
+  .second-row {
+    display: flex;
+    padding: 0 20px;
+    margin-bottom: -130px;
+    justify-content: space-between;
+  }
+  
+  .container {
+    display: flex;
+    flex-basis: 65%;
+  }
+  
+  @media screen and (max-width: 1400px) {
+    .hours {
+      flex-basis: 70%;
+    }
+  
+    .contact {
+      flex-basis: 30%;
+    }
+  
+    .container {
+      display: flex;
+      flex-direction: row-reverse;
+      flex-basis: 100%;
+    }
+  
+    .break-panel-wide {
+      flex-direction: column;
+    }
+  
+  }
+  
+  @media screen and (max-width: 960px) {
+    .second-row {
+      flex-direction: column-reverse;
+    }
+  }
+  
