@@ -34,7 +34,7 @@ export class GalleryFormComponent implements OnInit {
     if (uploadSuccessFileName) {
       const url = await this.uploadService.getImage(uploadSuccessFileName)
       this.success = "Upload Success"
-      this.store.dispatch(AdminActions.uploadGalleryImage({ image: { refURL: uploadSuccessFileName, isActive: true, url } }))
+      this.store.dispatch(AdminActions.uploadGalleryImage({ image: { refURL: uploadSuccessFileName, isActive: true, url, rotation: 0 } }))
       setTimeout(() => {
         this.dialogRef.close()
       }, 1000)

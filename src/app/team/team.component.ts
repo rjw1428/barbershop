@@ -59,7 +59,7 @@ export class TeamComponent implements OnInit, AfterViewInit {
 
   onSelected(member: Member) {
     this.dialog.open(TeamPopupComponent, {
-      data: { title: member.name, subtitle: member.position, img: member.url } as Popup
+      data: { title: member.name, subtitle: member.position, img: member.url, rotation: member.rotation } as Popup
     })
   }
 }

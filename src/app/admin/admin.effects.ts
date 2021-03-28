@@ -4,6 +4,7 @@ import { AngularFireDatabase, SnapshotAction } from "@angular/fire/database";
 import { AngularFirestore, DocumentChangeAction } from "@angular/fire/firestore";
 import { AngularFireStorage } from "@angular/fire/storage";
 import { MatDialog } from "@angular/material/dialog";
+import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { forkJoin, from, of } from "rxjs";
@@ -14,6 +15,7 @@ import { AppState } from "../models/appState";
 import { GalleryImg } from "../models/galleryImg";
 import { Member } from "../models/member";
 import { Product } from "../models/product";
+import { User } from "../models/user";
 import { AdminActions } from "./admin.action-types";
 import { UploadService } from "./upload.service";
 
@@ -129,6 +131,13 @@ export class AdminEffects {
         )//, { dispatch: false }
     )
 
+    rotateGalleryImage$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AdminActions.rotateGalleryImage),
+            switchMap(({ id, rotation }) => this.db.object(`gallery/${id}`).update({ rotation }))
+        ), { dispatch: false }
+    )
+
     uploadImages$ = createEffect(() =>
         this.actions$.pipe(
             ofType(AdminActions.uploadGalleryImage),
@@ -168,7 +177,7 @@ export class AdminEffects {
             })
         )
     )
-    
+
     addTeamMember$ = createEffect(() =>
         this.actions$.pipe(
             ofType(AdminActions.saveTeamMember),
@@ -198,21 +207,13 @@ export class AdminEffects {
         ), { dispatch: false }
     )
 
-
-    logUserIn$ = createEffect(() =>
+    logUserOut$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(AdminActions.login),
-            switchMap(({ username, password }) => this.firebaseAuth.signInWithEmailAndPassword(username, password)),
-            map(resp => {
-                console.log(resp)
-                return AdminActions.storeUserState({ user: resp.user.email })
-                // if (!resp.user.emailVerified) console.log("NOT VERIFIED")
-                // return resp.user.emailVerified
-                //     ? AppActions.getUserAccount({ uid: resp.user.uid })//User Session has persisted
-                //     : AppActions.noAction()
-            })
-        )
+            ofType(AdminActions.logOut),
+            switchMap(() => this.firebaseAuth.signOut())
+        ), { dispatch: false }
     )
+
 
     constructor(
         private store: Store<AppState>,
@@ -221,6 +222,7 @@ export class AdminEffects {
         private storage: AngularFireStorage,
         private db: AngularFireDatabase,
         private uploadService: UploadService,
-        private dialog: MatDialog
+        private dialog: MatDialog,
+        private router: Router
     ) { }
 }

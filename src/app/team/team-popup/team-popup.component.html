@@ -14,9 +14,7 @@
 </div> -->
 
 <!-- TAKE TWO -->
-<div class="container"
-  style="display: flex; flex-direction: column-reverse; justify-content: flex-start; background-size: cover; background-position: center; background-repeat: no-repeat;"
-  [ngStyle]="{'background-image': 'url('+data.img+')'}">
+<div class="container" [ngStyle]="{'background-image': 'url('+data.img+')'}">
   <h1 class="title">{{data.title}}</h1>
   <h3 style="margin: 0; text-align: center; text-shadow: 1px 1px 1px black;">{{data.subtitle}}</h3>
 </div>
@@ -31,3 +29,4 @@
 <div mat-dialog-actions style="display: flex; justify-content: center;">
   <button mat-dialog-close>Close</button>
 </div>
+<!--  -->

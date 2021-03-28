@@ -34,6 +34,10 @@
   .fileover {
     animation: shake 500ms linear 0s infinite;
   }
+
+  .icon {
+    transition: all 500ms;
+  }
   
   @keyframes shake {
       0% {transform: translate(1px, 1px) rotate(0deg);}

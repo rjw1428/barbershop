@@ -1,1 +1,47 @@
-<p>login works!</p>
+<nav style="display: flex; justify-content: space-between; align-items: center; background-color: rgb(19, 50, 79)">
+  <div
+    style="flex-basis: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-bottom: .5em;">
+    <h1 id="main-barbershop">BARBERSHOP</h1>
+    <h1 id="main-denim">DENIM</h1>
+  </div>
+  <div style="margin-right: 1em">
+  </div>
+</nav>
+
+<section style="display: flex; justify-content: center; background-color: #333; height: 100vh; overflow: hidden;">
+  <mat-card class="form-background" style="width: 300px; max-height: 30vh;">
+    <mat-card-content>
+      <form [formGroup]="login" style="display: flex; flex-direction: column;">
+        <h2 class="title">Log In</h2>
+        <mat-form-field class="full-width-input">
+          <input matInput name="ignoreMe" formControlName="username" required>
+          <mat-error>
+            Please provide a valid email address
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="Password" formControlName="password" required>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions style="display: flex; flex-direction: column; padding: 0">
+      <div style="display: flex; justify-content: space-around; margin-bottom: 1em;">
+        <!-- <span><a [routerLink]="" (click)="onForgotPassword($event)">Forgot Password</a></span> -->
+        <!-- <span><a routerLink="newuser" mat-dialog-close>New User</a></span> -->
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <button mat-raised-button color="primary" (click)="onSubmit()">Login</button>
+        <mat-error *ngIf="login.dirty && login.invalid">
+          {{error}}
+        </mat-error>
+        <mat-error *ngIf="authError$ | async as authError">
+          {{authError}}
+        </mat-error>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</section>

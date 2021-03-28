@@ -31,6 +31,7 @@ import { TeamEditorComponent } from './team-editor/team-editor.component';
 import { GalleryFormComponent } from './gallery-editor/gallery-form/gallery-form.component';
 import { TeamFormComponent } from './team-editor/team-form/team-form.component';
 import { DragNDropDirective } from '../shared/drag-n-drop.directive'
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -60,10 +61,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     MatTabsModule,
-    MatCardModule,
-    MatInputModule,
     MatIconModule,
-    MatButtonModule,
     MatDividerModule,
     MatDialogModule,
     MatSelectModule,
@@ -71,7 +69,7 @@ const routes: Routes = [
     MatListModule,
     MatSnackBarModule,
     MatCheckboxModule,
-    ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('admin', adminReducer),
     EffectsModule.forFeature([AdminEffects])

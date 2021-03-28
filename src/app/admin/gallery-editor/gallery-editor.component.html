@@ -1,22 +1,32 @@
 <section style="display: flex; justify-content: center; padding: 2em 1em;">
-  <mat-card>
+  <mat-card style="max-width: 600px;">
     <mat-card-header>
       <mat-card-title>Gallery Images</mat-card-title>
-      <mat-card-subtitle>More information about what is active and what isn't</mat-card-subtitle>
+      <mat-card-subtitle>Minimum of 6, Max of 20. Hiding image will keep it in your queue but not show it on the homepage.</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content style="display: flex; flex-direction: column;">
-      <div *ngFor="let img of images$ | async; trackBy: identify" style="display: flex; align-items: center;">
+      <mat-card *ngFor="let img of images$ | async; trackBy: identify" style="display: flex; align-items: stretch; margin-bottom: 2em;">
         <div style="max-width: 200px;" [ngStyle]="{opacity: img.isActive ? 1 : .6}">
-          <img [src]="img.url" width="100%" height="100%">
+          <img [src]="img.url" width="100%" height="100%" [ngStyle]="{'transform':  'rotate('+img.rotation+'deg)'}">
         </div>
-        <div>
-          <button mat-flat-button color="primary" (click)="toggleActive(true, img.id)" *ngIf="!img.isActive">Set Active</button>
-          <button mat-flat-button color="warn" (click)="toggleActive(false, img.id)" *ngIf="img.isActive">Deactivate</button>
-          <button mat-icon-button color="warn" (click)="onRemove(img)">
-            <mat-icon>delete_forever</mat-icon>
-          </button>
+        <div style="display: flex; flex-direction: column; width: 100%; justify-content: flex-end; margin-left: 1em;">
+          <!-- <div style="display: flex; justify-content: space-around;">
+            <button mat-icon-button color="primary" (click)="onRotate(-90, img)">
+              <mat-icon>rotate_left</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" (click)="onRotate(90, img)">
+              <mat-icon>rotate_right</mat-icon>
+            </button>
+          </div> -->
+          <div style="display: flex;">
+            <button mat-flat-button color="primary" (click)="toggleActive(true, img.id)" *ngIf="!img.isActive">Show</button>
+            <button mat-flat-button color="warn" (click)="toggleActive(false, img.id)" *ngIf="img.isActive">Hide</button>
+            <button mat-icon-button color="warn" (click)="onRemove(img)">
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+          </div>
         </div>
-      </div>
+      </mat-card>
     </mat-card-content>
   </mat-card>
 </section>

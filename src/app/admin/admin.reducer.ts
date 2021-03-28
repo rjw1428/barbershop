@@ -13,8 +13,19 @@ export const initialState: AdminState = {
 export const adminReducer = createReducer(
     initialState,
     on(AdminActions.addProduct, (state) => ({ ...state, isLoading: true })),
-    on(AdminActions.storeUserState, (state, { user }) => ({ ...state, user })),
     on(AdminActions.storeAllAbout, (state, { about }) => ({ ...state, about })),
     on(AdminActions.storeGalleryImages, (state, { gallery }) => ({ ...state, gallery })),
-    on(AdminActions.storeTeamMembers, (state, { members }) => ({ ...state, members }))
+    on(AdminActions.storeTeamMembers, (state, { members }) => ({ ...state, members })),
+    on(AdminActions.rotateGalleryImage, (state, { rotation, id }) => {
+        return {
+            ...state,
+            gallery: {
+                ...state.gallery,
+                [id]: {
+                    ...state.gallery[id],
+                    rotation
+                }
+            }
+        }
+    }),
 )

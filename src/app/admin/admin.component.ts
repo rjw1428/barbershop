@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppActions } from '../app.action-types';
 import { AppState } from '../models/appState';
 import { AdminActions } from './admin.action-types';
 
@@ -18,5 +17,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  onLogOut() {
+    this.store.dispatch(AdminActions.logOut())
+  }
 }

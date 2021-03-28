@@ -1,3 +1,5 @@
+
+
 h3,
 p {
   color: white;
@@ -35,8 +37,13 @@ button:focus {
   height: 80vh;
   max-width: 500px;
   width: 50vw;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
 
 @media screen and (max-width: 960px) {
   .container {
@@ -48,9 +55,9 @@ button:focus {
 
 
 @media screen and (max-width: 550px) {
-    .container {
-      width: 84vw;
-      max-height: 80vh;
-      height: 50vh;
-    }
+  .container {
+    width: 84vw;
+    max-height: 80vh;
+    height: 50vh;
   }
+}

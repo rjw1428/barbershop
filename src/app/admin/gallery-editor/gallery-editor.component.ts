@@ -2,8 +2,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { filter, first, map, shareReplay } from 'rxjs/operators';
+import { AppActions } from 'src/app/app.action-types';
 import { AppState } from 'src/app/models/appState';
 import { GalleryImg } from 'src/app/models/galleryImg';
+import { GALLERY_MAX, GALLERY_MIN } from 'src/app/shared/util';
 import { AdminActions } from '../admin.action-types';
 import { galleryImageSelector } from '../admin.selectors';
 import { GenericPopupComponent } from '../generic-popup/generic-popup.component';
@@ -32,7 +34,13 @@ export class GalleryEditorComponent implements OnInit {
   }
 
   onAdd() {
-    this.dialog.open(GalleryFormComponent)
+    this.images$.pipe(
+      first(),
+      map(images => images.length < GALLERY_MAX)
+    ).subscribe(valid => {
+      if (!valid) return console.log("ADDING TOO MANY")
+      this.dialog.open(GalleryFormComponent)
+    })
   }
 
   toggleActive(isActive, imageId) {
@@ -40,15 +48,25 @@ export class GalleryEditorComponent implements OnInit {
   }
 
   onRemove(imgObj) {
-    const { url, ...image } = imgObj
-    this.dialog.open(GenericPopupComponent, {
-      data: {
-        title: 'Are you sure?',
-        content: `<p style="color: black; font-weight: 700;">You are about to delete ${image.refURL}</p>`,
-        actionLabel: 'Delete',
-        action: () => this.store.dispatch(AdminActions.deleteGalleryImage({ image }))
-      }
+    this.images$.pipe(
+      first(),
+      map(images => images.length > GALLERY_MIN)
+    ).subscribe(valid => {
+      if (!valid) return console.log("REMOVING WILL CREATE TOO FEW")
+      const { url, ...image } = imgObj
+      this.dialog.open(GenericPopupComponent, {
+        data: {
+          title: 'Are you sure?',
+          content: `<p style="color: black; font-weight: 700;">You are about to delete ${image.refURL}</p>`,
+          actionLabel: 'Delete',
+          action: () => this.store.dispatch(AdminActions.deleteGalleryImage({ image }))
+        }
+      })
     })
+  }
+
+  onRotate(rotation: number, image: GalleryImg) {
+    this.store.dispatch(AdminActions.rotateGalleryImage({ rotation: image.rotation + rotation, id: image.id }))
   }
 
   identify(index: number, item: GalleryImg) {

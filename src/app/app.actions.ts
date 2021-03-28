@@ -55,3 +55,7 @@ export const storeGalleryImages = createAction(
     "[App Effect] Store Gallery Images",
     props<{ gallery: { [id: string]: GalleryImg } }>()
 )
+
+export const checkUserPersistance = createAction(
+    '[App Component] Check for persistant sser',
+)

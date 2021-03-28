@@ -37,6 +37,9 @@ export class TeamFormComponent implements OnInit {
     })
   }
 
+  onRotate(rotation: number) {
+    this.member = {...this.member, rotation: this.member.rotation + rotation}
+  }
 
   onFilesSelected(image: FileList) {
     this.selectedFile = image.item(0)
@@ -49,11 +52,13 @@ export class TeamFormComponent implements OnInit {
 
     this.isSaving = true
 
+    // EDITING BUT NOT UPLOADING FILE
     if (!this.selectedFile && this.member) {
-      const member = { id: this.member.id, ...this.memberForm.value, }
+      const member = { id: this.member.id, ...this.memberForm.value, rotation: this.member.rotation}
       this.store.dispatch(AdminActions.updateTeamMember({ member }))
       return this.dialogRef.close()
     }
+
     const uploadSuccessFileName = await this.uploadService.pushUpload(this.selectedFile, 'team', (percent) => this.uploadValue = percent)
     if (uploadSuccessFileName) {
       const url = await this.uploadService.getImage(uploadSuccessFileName)

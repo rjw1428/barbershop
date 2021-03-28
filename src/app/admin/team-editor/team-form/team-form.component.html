@@ -2,9 +2,17 @@
 <h1 style="color: black" *ngIf="member">Edit Team Member</h1>
 <mat-dialog-content>
   <div style="display: flex;">
-    <div *ngIf="member" style="height: 175px; margin-right: 1em">
+    <div *ngIf="member" style="height: 200px; margin-right: 1em; display: flex; flex-direction: column;">
       <p style="color: black; margin:0; font-weight: 800;">Current:</p>
-      <img [src]="member.url" height="90%" width="auto">
+      <img class="icon" [src]="member.url" height="150px" width="auto" [ngStyle]="{'transform':  'rotate('+member.rotation+'deg)'}">
+      <!-- <div style="display: flex; justify-content: space-around;">
+        <button mat-icon-button color="primary" (click)="onRotate(-90)">
+          <mat-icon>rotate_left</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" (click)="onRotate(90)">
+          <mat-icon>rotate_right</mat-icon>
+        </button>
+      </div> -->
     </div>
     <form [formGroup]="memberForm" style="display: flex; flex-direction: column; width: 100%;">
       <mat-form-field appearance="outline">

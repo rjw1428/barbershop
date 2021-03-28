@@ -3,5 +3,6 @@ import { FrontEndState } from "./frontEndState";
 
 export interface AppState {
     app: FrontEndState,
-    admin: AdminState
+    admin: AdminState,
+    login: { error: string }
 }

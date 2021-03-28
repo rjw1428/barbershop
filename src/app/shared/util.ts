@@ -7,3 +7,6 @@ export const shortDayMap = {
     Saturday: 'Sat',
     Sunday: 'Sun',
 }
+
+export const GALLERY_MIN = 6
+export const GALLERY_MAX = 20

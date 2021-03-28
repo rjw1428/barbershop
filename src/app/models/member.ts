@@ -4,4 +4,5 @@ export interface Member {
     position: string,
     img: string
     url?: string;
+    rotation: number
 }

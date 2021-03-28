@@ -4,16 +4,10 @@ import { GalleryImg } from "../models/galleryImg";
 import { Hours } from "../models/hours";
 import { Member } from "../models/member";
 import { Product } from "../models/product";
+import { User } from "../models/user";
 
-// ------- USER ----- 
-export const login = createAction(
-    "[MOVE TO LOGIN COMPONENT] Login",
-    props<{ username: string, password: string }>()
-)
-
-export const storeUserState = createAction(
-    "[App Effect] Logged In",
-    props<{ user: any }>()
+export const logOut = createAction(
+    "[Admin Component] Log Out"
 )
 
 // ------- PRODUCT ----- 
@@ -87,6 +81,11 @@ export const setGalleryImageActive = createAction(
 export const deleteGalleryImage = createAction(
     "[Gallery Editor Component] Delete Gallery Image",
     props<{ image: GalleryImg }>()
+)
+
+export const rotateGalleryImage = createAction(
+    "[Gallery Editor Component] Rotate Gallery Image",
+    props<{ rotation: number, id: string }>()
 )
 
 // ------- TEAM ----- 

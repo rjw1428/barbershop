@@ -4,6 +4,11 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { LoginComponent } from './login.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { Routes, RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+import { LoginEffects } from './login.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { loginReducer } from './login.reducer';
+import { StoreModule } from '@ngrx/store';
 
 
 const routes: Routes = [
@@ -22,7 +27,10 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild(routes),
+    StoreModule.forFeature('login', loginReducer),
+    EffectsModule.forFeature([LoginEffects])
   ]
 })
 export class LoginModule { }
