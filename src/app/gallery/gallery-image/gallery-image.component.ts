@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
 import { Component, ElementRef, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EventEmitter } from 'events';
+import { GalleryImg } from 'src/app/models/galleryImg';
 import { Popup } from 'src/app/models/popup';
 import { TeamPopupComponent } from 'src/app/team/team-popup/team-popup.component';
 
@@ -11,7 +12,7 @@ import { TeamPopupComponent } from 'src/app/team/team-popup/team-popup.component
   styleUrls: ['./gallery-image.component.scss'],
 })
 export class GalleryImageComponent implements OnInit, OnChanges {
-  @Input() image: string
+  @Input() image: GalleryImg
   @Input() width: number
   @Input() margin: number
   @Input() index: number
@@ -31,7 +32,7 @@ export class GalleryImageComponent implements OnInit, OnChanges {
 
   onClick() {
     this.dialog.open(TeamPopupComponent, {
-      data: { title: null, subtitle: null, img: this.image } as Popup
+      data: { title: null, subtitle: null, img: this.image.url } as Popup
     })
   }
 }

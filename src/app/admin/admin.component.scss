@@ -1,0 +1,34 @@
+#main-barbershop {
+  position: relative;
+  left: 6px;
+  color: white;
+  font-family: 'Quattrocento', serif;
+  font-size: 1em;
+  letter-spacing: 6px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  text-shadow: 2px 2px 2px black;
+}
+
+#main-denim {
+  color: var(--main-color);
+  font-family: 'Pirulen', sans-serif;
+  font-size: 2.25em;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  line-height: .7em;
+  text-shadow: 3px 3px 3px black;
+}
+
+.title {
+    display: block;
+    font-size: 2.25em;
+}
+
+@media screen and (max-width: 600px) {
+    .title {
+        display: none;
+    }
+}

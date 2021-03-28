@@ -7,7 +7,9 @@ export const initialAppState: FrontEndState = {
     isLoggedIn: false,
     hours: null,
     products: null,
-    about: null
+    about: null,
+    members: null,
+    gallery: null
 }
 const _appReducer = createReducer(
     initialAppState,
@@ -15,7 +17,9 @@ const _appReducer = createReducer(
     on(AppActions.stopLoading, (state) => ({ ...state, isLoading: false })),
     on(AppActions.storeHours, (state, { hours }) => ({ ...state, hours })),
     on(AppActions.storeAbout, (state, { about }) => ({ ...state, about })),
-    on(AppActions.storeProducts, (state, { products }) => ({ ...state, products }))
+    on(AppActions.storeProducts, (state, { products }) => ({ ...state, products })),
+    on(AppActions.storeTeamMembers, (state, { members }) => ({ ...state, members })),
+    on(AppActions.storeGalleryImages, (state, { gallery }) => ({ ...state, gallery }))
 )
 
 export function appReducer(state, action) {

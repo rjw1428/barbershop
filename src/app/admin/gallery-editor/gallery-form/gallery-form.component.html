@@ -1,0 +1,21 @@
+<h1 style="color: black">Add An Image</h1>
+<mat-dialog-content>
+  <div class="dropzone" DragNDrop (fileDropped)="onFilesSelected($event)" *ngIf="!filePreview; else preview">
+    <input type="file" #fileDropRef (change)="onFilesSelected($event.target.files)">
+    <h3 style="color: black;">Drag and drop picture here</h3>
+    <h3 style="color: black;">or</h3>
+    <label>Browse for image</label>
+  </div>
+
+  <ng-template #preview>
+    <div style="max-width: 600px;">
+      <img [src]="filePreview" width="100%" height="100%">
+    </div>
+    <mat-progress-bar color="primary" mode="determinate" [value]="uploadValue"></mat-progress-bar>
+  </ng-template>
+</mat-dialog-content>
+<mat-dialog-actions style="display: flex; flex-direction: column; align-items: center;">
+  <p style="color: red; font-weight: 700;" *ngIf="error">{{error}}</p>
+  <p style="color: #69f0ae; font-weight: 700;" *ngIf="success">{{success}}</p>
+  <button mat-flat-button color="warn" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

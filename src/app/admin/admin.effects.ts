@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFireDatabase, SnapshotAction } from "@angular/fire/database";
 import { AngularFirestore, DocumentChangeAction } from "@angular/fire/firestore";
+import { AngularFireStorage } from "@angular/fire/storage";
 import { MatDialog } from "@angular/material/dialog";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
@@ -10,8 +11,11 @@ import { filter, find, first, flatMap, map, mergeMap, switchMap, tap } from "rxj
 import { AppActions } from "../app.action-types";
 import { About } from "../models/about";
 import { AppState } from "../models/appState";
+import { GalleryImg } from "../models/galleryImg";
+import { Member } from "../models/member";
 import { Product } from "../models/product";
 import { AdminActions } from "./admin.action-types";
+import { UploadService } from "./upload.service";
 
 @Injectable()
 export class AdminEffects {
@@ -109,6 +113,92 @@ export class AdminEffects {
         ), { dispatch: false }
     )
 
+    fetchGalleryImages$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AdminActions.fetchGalleryImages),
+            switchMap(() => this.db.list(`gallery`).snapshotChanges()),
+            map((resp: SnapshotAction<GalleryImg>[]) => {
+                const gallery = resp
+                    .map((val) => {
+                        const image = val.payload.val()
+                        return { [val.key]: { ...val.payload.val(), id: val.key } }
+                    })
+                    .reduce((acc, cur) => ({ ...acc, ...cur }), {})
+                return AdminActions.storeGalleryImages({ gallery })
+            })
+        )//, { dispatch: false }
+    )
+
+    uploadImages$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AdminActions.uploadGalleryImage),
+            switchMap(({ image }) => this.db.list(`gallery`).push(image))
+        ), { dispatch: false }
+    )
+
+    setGalleryImageActive$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AdminActions.setGalleryImageActive),
+            switchMap(({ isActive, imageId }) => this.db.object(`gallery/${imageId}`).update({ isActive }))
+        ), { dispatch: false }
+    )
+
+    deleteGalleryImage$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AdminActions.deleteGalleryImage),
+            switchMap(({ image }) => {
+                return Promise.all([
+                    this.storage.ref(image.refURL).delete().toPromise(),
+                    this.db.object(`gallery/${image.id}`).remove()
+                ])
+            })
+        ), { dispatch: false }
+    )
+
+
+    fetchTeamMembers$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AdminActions.fetchTeamMembers),
+            switchMap(() => this.db.list(`team`).snapshotChanges()),
+            map((resp: SnapshotAction<Member>[]) => {
+                const members = resp
+                    .map(val => ({ [val.key]: { ...val.payload.val(), id: val.key } }))
+                    .reduce((acc, cur) => ({ ...acc, ...cur }), {})
+                return AdminActions.storeTeamMembers({ members })
+            })
+        )
+    )
+    
+    addTeamMember$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AdminActions.saveTeamMember),
+            switchMap(({ member }) => this.db.list(`team`).push(member))
+        ), { dispatch: false }
+    )
+
+    updateTeamMember$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AdminActions.updateTeamMember),
+            switchMap(({ member }) => {
+                const { id, ...updatedMember } = member
+                return this.db.object(`team/${id}`).update(updatedMember)
+            })
+        ), { dispatch: false }
+    )
+
+    deleteTeamMember$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AdminActions.deleteMember),
+            switchMap(({ member }) => {
+                return Promise.all([
+                    this.storage.ref(member.img).delete().toPromise(),
+                    this.db.object(`team/${member.id}`).remove()
+                ])
+            })
+        ), { dispatch: false }
+    )
+
+
     logUserIn$ = createEffect(() =>
         this.actions$.pipe(
             ofType(AdminActions.login),
@@ -128,9 +218,9 @@ export class AdminEffects {
         private store: Store<AppState>,
         private firebaseAuth: AngularFireAuth,
         private actions$: Actions,
-        private afs: AngularFirestore,
+        private storage: AngularFireStorage,
         private db: AngularFireDatabase,
+        private uploadService: UploadService,
         private dialog: MatDialog
-
     ) { }
 }

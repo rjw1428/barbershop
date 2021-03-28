@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
@@ -9,7 +9,8 @@ import { AdminActions } from '../../admin.action-types';
 @Component({
   selector: 'app-about-form',
   templateUrl: './about-form.component.html',
-  styleUrls: ['./about-form.component.scss']
+  styleUrls: ['./about-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AboutFormComponent implements OnInit {
   aboutForm: FormGroup

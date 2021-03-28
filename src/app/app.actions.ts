@@ -1,5 +1,7 @@
 import { createAction, props } from "@ngrx/store";
+import { GalleryImg } from "./models/galleryImg";
 import { Hours } from "./models/hours";
+import { Member } from "./models/member";
 import { Product } from "./models/product";
 
 export const startLoading = createAction(
@@ -34,4 +36,22 @@ export const fetchProducts = createAction(
 export const storeProducts = createAction(
     "[App Effect] Store Products Data",
     props<{ products: { [id: string]: Product } }>()
+)
+
+export const fetchTeamMembers = createAction(
+    "[Team Component] Fetch Team Members"
+)
+
+export const storeTeamMembers = createAction(
+    "[App Effect] Store Team Members",
+    props<{ members: { [id: string]: Member } }>()
+)
+
+export const fetchGalleryImages = createAction(
+    "[Gallery Component] Fetch Gallery Images"
+)
+
+export const storeGalleryImages = createAction(
+    "[App Effect] Store Gallery Images",
+    props<{ gallery: { [id: string]: GalleryImg } }>()
 )

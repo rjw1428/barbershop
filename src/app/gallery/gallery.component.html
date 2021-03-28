@@ -16,7 +16,7 @@
         <!-- <div style="position: absolute;  right: 40px; margin-top: -300px; background-color: lightgray; border-radius: 50%; font-size: 4em; width: 1.2em; text-align: center; cursor: pointer; opacity: .7;" (click)="onNext()"> &#62; </div> -->
 
 
-      <div class="gallery-narrow" >
+      <div class="gallery-narrow">
         <div class="row" style="margin-bottom: 12px; margin-top: -12px;" #upperRow>
           <div style="display: inline-block; height: 300px;" *ngFor="let img of images; let i=index;">
             <app-gallery-image *ngIf="i<images.length/2" 

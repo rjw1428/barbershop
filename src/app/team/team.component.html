@@ -3,7 +3,7 @@
     <div class="content" >
       <h1 class="title" #content>OUR TEAM</h1>
       <div class="frame">
-        <app-team-member class="member" [member]="member" *ngFor="let member of members" (selected)="onSelected($event)" [ngClass]="{'animateIn': triggerAnimation}"></app-team-member>
+        <app-team-member class="member" [member]="member" *ngFor="let member of team$ | async" (selected)="onSelected($event)" [ngClass]="{'animateIn': triggerAnimation}"></app-team-member>
       </div>
     </div>
   </div>

@@ -1,5 +1,10 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { filter, first } from 'rxjs/operators';
+import { AppActions } from '../app.action-types';
+import { teamMemberSelector } from '../app.selectors';
+import { AppState } from '../models/appState';
 import { Member } from '../models/member';
 import { Popup } from '../models/popup';
 import { TeamPopupComponent } from './team-popup/team-popup.component';
@@ -11,44 +16,21 @@ import { TeamPopupComponent } from './team-popup/team-popup.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TeamComponent implements OnInit, AfterViewInit {
-  members: Member[] = [{
-    name: "Chris Cahill",
-    position: "Owner & Barber",
-    img: "/assets/media/chris.jpeg"
-  },
-  {
-    name: "Keith Conroy",
-    position: "Barber",
-    img: "/assets/media/keith.jpeg"
-  },
-  {
-    name: "Nina Jennings",
-    position: "Barber",
-    img: "/assets/media/nina.jpeg"
-  },
-  {
-    name: "Brian Curran",
-    position: "Barber",
-    img: "/assets/media/brian.jpeg"
-  },
-  {
-    name: "Rachael Opdenaker",
-    position: "Management & Scheduling",
-    img: "/assets/media/rachael.png"
-  },
-  {
-    name: "Haley Welch",
-    position: "Management & Scheduling",
-    img: "/assets/media/haley.png"
-  }]
+  team$ = this.store.select(teamMemberSelector)
   @ViewChild('content') content: ElementRef
   triggerAnimation = false
   constructor(
+    private store: Store<AppState>,
     private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
+    this.team$.pipe(
+      first(),
+      filter(team => !team.length)
+    ).subscribe(() => this.store.dispatch(AppActions.fetchTeamMembers()))
   }
+
   ngAfterViewInit() {
     this.shouldAnimate(window)
   }
@@ -77,7 +59,7 @@ export class TeamComponent implements OnInit, AfterViewInit {
 
   onSelected(member: Member) {
     this.dialog.open(TeamPopupComponent, {
-      data: { title: member.name, subtitle: member.position, img: member.img } as Popup
+      data: { title: member.name, subtitle: member.position, img: member.url } as Popup
     })
   }
 }

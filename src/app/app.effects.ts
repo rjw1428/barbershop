@@ -12,6 +12,8 @@ import { Hours } from "./models/hours";
 import { Product } from "./models/product";
 import { AdminActions } from "./admin/admin.action-types";
 import { About } from "./models/about";
+import { Member } from "./models/member";
+import { GalleryImg } from "./models/galleryImg";
 
 
 
@@ -58,6 +60,32 @@ export class AppEffects {
                 return AppActions.storeProducts({ products })
             })
         )
+    )
+
+    fetchTeamMembers$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AppActions.fetchTeamMembers),
+            switchMap(() => this.db.list(`team`).snapshotChanges()),
+            map((resp: SnapshotAction<Member>[]) => {
+                const members = resp
+                    .map(val => ({ [val.key]: { ...val.payload.val(), id: val.key } }))
+                    .reduce((acc, cur) => ({ ...acc, ...cur }), {})
+                return AppActions.storeTeamMembers({ members })
+            })
+        )
+    )
+
+    fetchGalleryImages$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AppActions.fetchGalleryImages),
+            switchMap(() => this.db.list(`gallery`).snapshotChanges()),
+            map((resp: SnapshotAction<GalleryImg>[]) => {
+                const gallery = resp
+                    .map((val) => ({ [val.key]: { ...val.payload.val(), id: val.key } }))
+                    .reduce((acc, cur) => ({ ...acc, ...cur }), {})
+                return AppActions.storeGalleryImages({ gallery })
+            })
+        )//, { dispatch: false }
     )
 
 

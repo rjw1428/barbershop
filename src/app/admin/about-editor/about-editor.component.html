@@ -17,7 +17,7 @@
         </button>
       </div>
       <div *ngIf="selectedAbout$ | async as about;">
-        <div *ngFor="let paragraph of about.content">{{paragraph}}</div>
+        <div *ngFor="let paragraph of about.content" style="padding: 1em">{{paragraph}}</div>
         <div>
           <h1 *ngIf="about.isActive; else setActive" style="color: red;">Acitve</h1>
           <ng-template #setActive>

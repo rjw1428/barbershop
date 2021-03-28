@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { filter, first } from 'rxjs/operators';
 import { AppActions } from 'src/app/app.action-types';
 import { hoursSelector } from 'src/app/app.selectors';
 import { AppState } from 'src/app/models/appState';
@@ -10,7 +11,8 @@ import { HoursFormComponent } from './hours-form/hours-form.component';
 @Component({
   selector: 'app-hours-editor',
   templateUrl: './hours-editor.component.html',
-  styleUrls: ['./hours-editor.component.scss']
+  styleUrls: ['./hours-editor.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HoursEditorComponent implements OnInit {
   hours$ = this.store.select(hoursSelector)
@@ -20,7 +22,10 @@ export class HoursEditorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(AppActions.fetchHours())
+    this.hours$.pipe(
+      first(),
+      filter(hours => !hours.length)
+    ).subscribe(() => this.store.dispatch(AppActions.fetchHours()))
   }
 
   identify(index: number, item: Hours) {

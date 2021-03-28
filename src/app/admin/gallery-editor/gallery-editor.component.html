@@ -1,0 +1,27 @@
+<section style="display: flex; justify-content: center; padding: 2em 1em;">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Gallery Images</mat-card-title>
+      <mat-card-subtitle>More information about what is active and what isn't</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content style="display: flex; flex-direction: column;">
+      <div *ngFor="let img of images$ | async; trackBy: identify" style="display: flex; align-items: center;">
+        <div style="max-width: 200px;" [ngStyle]="{opacity: img.isActive ? 1 : .6}">
+          <img [src]="img.url" width="100%" height="100%">
+        </div>
+        <div>
+          <button mat-flat-button color="primary" (click)="toggleActive(true, img.id)" *ngIf="!img.isActive">Set Active</button>
+          <button mat-flat-button color="warn" (click)="toggleActive(false, img.id)" *ngIf="img.isActive">Deactivate</button>
+          <button mat-icon-button color="warn" (click)="onRemove(img)">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+
+<button mat-icon-button class="add-button" (click)="onAdd()">
+  <mat-icon>add_circle</mat-icon>
+</button>

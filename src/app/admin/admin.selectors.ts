@@ -16,3 +16,17 @@ export const singleAboutSelector = createSelector(
         ? admin.about[aboutId]
         : null
 )
+
+export const galleryImageSelector = createSelector(
+    selectAdminState,
+    admin => admin.gallery
+        ? Object.values(admin.gallery)
+        : []
+)
+
+export const adminTeamMemberSelector = createSelector(
+    selectAdminState,
+    admin => admin.members
+        ? Object.values(admin.members)
+        : []
+)

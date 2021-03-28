@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
+import { filter, first } from 'rxjs/operators';
 import { AppActions } from 'src/app/app.action-types';
 import { hoursSelector, productsSelector } from 'src/app/app.selectors';
 import { AppState } from 'src/app/models/appState';
@@ -14,7 +15,8 @@ import { ProductFormComponent } from './product-form/product-form.component';
 @Component({
   selector: 'app-products-editor',
   templateUrl: './products-editor.component.html',
-  styleUrls: ['./products-editor.component.scss']
+  styleUrls: ['./products-editor.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsEditorComponent implements OnInit {
   products$ = this.store.select(productsSelector)
@@ -24,7 +26,10 @@ export class ProductsEditorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(AppActions.fetchProducts())
+    this.products$.pipe(
+      first(),
+      filter(products => !products.length)
+    ).subscribe(() => this.store.dispatch(AppActions.fetchProducts()))
   }
 
   identify(index: number, item: Product) {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
@@ -14,9 +14,10 @@ import { AboutFormComponent } from './about-form/about-form.component';
 @Component({
   selector: 'app-about-editor',
   templateUrl: './about-editor.component.html',
-  styleUrls: ['./about-editor.component.scss']
+  styleUrls: ['./about-editor.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AboutEditorComponent implements OnInit, OnDestroy {
+export class AboutEditorComponent implements OnInit {
   about$ = this.store.select(allAboutSelector)
   selectedAbout$: Observable<About>
   versionSelector: FormControl
@@ -25,18 +26,17 @@ export class AboutEditorComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
   ) { }
 
-  ngOnDestroy() {
-    console.log("DESTROYED ABOUT")
-  }
-
   ngOnInit(): void {
     this.versionSelector = new FormControl('')
-    this.store.dispatch(AdminActions.fetchAllAbouts())
+
+    this.about$.pipe(
+      first(),
+      filter(about => !about.length)
+    ).subscribe(() => this.store.dispatch(AdminActions.fetchAllAbouts()))
 
     // Set Selected Value (Content)
     this.selectedAbout$ = this.versionSelector.valueChanges.pipe(
       switchMap(aboutId => this.store.select(singleAboutSelector, aboutId)),
-      tap(id => console.log(id))
     )
     // Set default selected version
     this.about$.pipe(

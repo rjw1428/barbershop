@@ -36,3 +36,17 @@ export const productsSelector = createSelector(
             .map(key => ({ ...app.products[key], id: key }))
         : []
 )
+
+export const teamMemberSelector = createSelector(
+    selectAppState,
+    app => app.members
+        ? Object.values(app.members)
+        : []
+)
+
+export const gallerySelector = createSelector(
+    selectAppState,
+    app => app.gallery
+        ? Object.values(app.gallery).filter(img=>img.isActive)
+        : []
+)

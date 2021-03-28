@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -12,7 +12,8 @@ import { AdminActions } from '../../admin.action-types';
 @Component({
   selector: 'app-hours-form',
   templateUrl: './hours-form.component.html',
-  styleUrls: ['./hours-form.component.scss']
+  styleUrls: ['./hours-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HoursFormComponent implements OnInit {
   hoursForm: FormGroup

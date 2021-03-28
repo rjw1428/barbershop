@@ -1,0 +1,43 @@
+<h1 style="color: black" *ngIf="!member">Add A Team Member</h1>
+<h1 style="color: black" *ngIf="member">Edit Team Member</h1>
+<mat-dialog-content>
+  <div style="display: flex;">
+    <div *ngIf="member" style="height: 175px; margin-right: 1em">
+      <p style="color: black; margin:0; font-weight: 800;">Current:</p>
+      <img [src]="member.url" height="90%" width="auto">
+    </div>
+    <form [formGroup]="memberForm" style="display: flex; flex-direction: column; width: 100%;">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input name="memberName" matInput formControlName="name">
+        <mat-error *ngIf="memberForm.invalid">Must include a name</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Position</mat-label>
+        <input name="position" matInput formControlName="position">
+        <mat-error *ngIf="memberForm.invalid">Must include a position</mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+  <mat-progress-bar *ngIf="isSaving" color="primary" mode="determinate" [value]="uploadValue"></mat-progress-bar>
+  <div class="dropzone" DragNDrop (fileDropped)="onFilesSelected($event)" *ngIf="!filePreview; else preview">
+    <input class="img-input" type="file" #fileDropRef (change)="onFilesSelected($event.target.files)">
+    <h3 style="color: black;">Drag and drop picture here</h3>
+    <h3 style="color: black;">or</h3>
+    <label>Browse for image</label>
+  </div>
+  <ng-template #preview>
+    <div style="max-width: 600px;">
+      <img [src]="filePreview" width="100%" height="100%">
+    </div>
+  </ng-template>
+</mat-dialog-content>
+<mat-dialog-actions style="display: flex; flex-direction: column; align-items: center;">
+  <p style="color: red; font-weight: 700;" *ngIf="error">{{error}}</p>
+  <p style="color: #69f0ae; font-weight: 700;" *ngIf="success">{{success}}</p>
+  <div style="display: flex; justify-content: center;">
+    <button mat-flat-button color="warn" mat-dialog-close>Cancel</button>
+    <button mat-flat-button color="primary" [disabled]="isSaving" (click)="onSave()">Save</button>
+  </div>
+</mat-dialog-actions>

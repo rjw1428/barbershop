@@ -1,4 +1,10 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { filter, first } from 'rxjs/operators';
+import { AppActions } from '../app.action-types';
+import { gallerySelector } from '../app.selectors';
+import { AppState } from '../models/appState';
+import { GalleryImg } from '../models/galleryImg';
 
 @Component({
   selector: 'app-gallery',
@@ -6,16 +12,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostList
   styleUrls: ['./gallery.component.scss']
 })
 export class GalleryComponent implements OnInit, AfterViewInit {
-  images = [
-    "assets/media/gallery1.jpg",
-    "assets/media/gallery2.jpg",
-    "assets/media/gallery3.jpg",
-    "assets/media/gallery4.jpg",
-    "assets/media/gallery5.jpg",
-    "assets/media/gallery6.jpg",
-    "assets/media/gallery7.jpg",
-    "assets/media/gallery8.jpg"
-  ]
+  images: GalleryImg[] = []
   @ViewChild('gallery') mainGallery: ElementRef;
   @ViewChild('upperRow') upperRow: ElementRef;
   @ViewChild('lowerRow') lowerRow: ElementRef;
@@ -29,10 +26,19 @@ export class GalleryComponent implements OnInit, AfterViewInit {
   activeIndex = 0
   interval: any
   continueAutoplayTimeout: any
-  constructor() {
-  }
+  constructor(
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit(): void {
+    this.store.select(gallerySelector).subscribe(galleryImages => {
+      this.images = galleryImages
+    })
+
+    this.store.select(gallerySelector).pipe(
+      first(),
+      filter(imgs => !imgs.length)
+    ).subscribe(() => this.store.dispatch(AppActions.fetchGalleryImages()))
   }
 
   ngAfterViewInit() {
@@ -51,7 +57,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
     const top = this.content.nativeElement.getBoundingClientRect().y
     const screenHeigth = window.innerHeight
     if (top < screenHeigth)
-      setTimeout(()=>this.triggerAnimation = true)
+      setTimeout(() => this.triggerAnimation = true)
   }
 
   onPrevious() {
@@ -97,7 +103,7 @@ export class GalleryComponent implements OnInit, AfterViewInit {
       this.upperRow.nativeElement.style.marginLeft = `${this.offsetCount * 0 - this.itemMargin}vw`
 
       this.lowerRow.nativeElement.style.transitionProperty = 'none'
-      this.lowerRow.nativeElement.style.marginRight = `${this.offsetCount * 0 }vw`
+      this.lowerRow.nativeElement.style.marginRight = `${this.offsetCount * 0}vw`
       this.offsetCount = 0
     }, 1500)
   }
