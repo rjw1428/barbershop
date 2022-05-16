@@ -17,7 +17,10 @@ export class UploadService {
   ) { }
 
   async pushUpload(item: File, folder: string, callback: (value) => void) {
-    const fileName = `${item.name}-${new Date().getTime()}`
+    const nameParts = item.name.split('.')
+    const ext = nameParts.splice(nameParts.length - 1).join('')
+    const name = nameParts.join('.')
+    const fileName = `${name}-${new Date().getTime()}.${ext}`
     let storageRef = this.storage.ref(`${folder}/${fileName}`)
     let uploadTask = storageRef.put(item);
 

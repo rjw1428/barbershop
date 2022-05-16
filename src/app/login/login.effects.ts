@@ -39,19 +39,20 @@ export class LoginEffects {
         )
     )
 
-    checkUserPersistance$ = createEffect(() =>
-        this.actions$.pipe(
-            ofType(AppActions.checkUserPersistance),
-            switchMap(() => new Promise((resolve, reject) => {
-                this.firebaseAuth.onAuthStateChanged(authData => resolve(authData))
-            })),
-            map(authData =>
-                authData
-                    ? LoginActions.getUserAccount({ uid: authData['uid'] })//User Session has persisted
-                    : LoginActions.noAction()
-            )
-        )
-    )
+    // checkUserPersistance$ = createEffect(() =>
+    //     this.actions$.pipe(
+    //         ofType(AppActions.checkUserPersistance),
+    //         switchMap(() => new Promise((resolve, reject) => {
+    //             this.firebaseAuth.onAuthStateChanged(authData => resolve(authData))
+    //         })),
+    //         map(authData => {
+    //             console.log(authData)
+    //             return authData
+    //                 ? LoginActions.getUserAccount({ uid: authData['uid'] })//User Session has persisted
+    //                 : LoginActions.noAction()
+    //         })
+    //     )
+    // )
 
 
     storeUserAccount$ = createEffect(() =>

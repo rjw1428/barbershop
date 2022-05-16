@@ -1,0 +1,7 @@
+<h2>New Applicant</h2>
+<p><strong>Name: </strong>{{first}} {{last}}</p>
+<p><strong>Email: </strong>{{email}}</p>
+<p><strong>Phone: </strong>{{phone}}</p>
+<p><strong>PA Barber/Cosmotology License: </strong>{{hasLicense}}</p>
+<p><strong>Portfolio (Instagram): </strong>{{insta}}</p>
+<p>You can view {{first}}'s resume by <a href="">clicking here</a></p>

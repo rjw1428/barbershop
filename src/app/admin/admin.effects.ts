@@ -207,6 +207,20 @@ export class AdminEffects {
         ), { dispatch: false }
     )
 
+    toggleBanner$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AdminActions.toggleBanner),
+            switchMap(({ showJoinBanner }) => this.db.object(`misc`).update({showJoinBanner}))
+        ), { dispatch: false }
+    )
+
+    updateBannerText$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AdminActions.updateBannerText),
+            switchMap(({ joinBannerText }) => this.db.object(`misc`).update({joinBannerText}))
+        ), { dispatch: false }
+    )
+
     logUserOut$ = createEffect(() =>
         this.actions$.pipe(
             ofType(AdminActions.logOut),

@@ -1,14 +1,16 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { filter, first, map } from 'rxjs/operators';
+import { combineLatest, Subject } from 'rxjs';
+import { filter, first, map, takeUntil } from 'rxjs/operators';
 import { AppActions } from 'src/app/app.action-types';
+import { joinBannerTextSelector, showJoinBannerSelector } from 'src/app/app.selectors';
 import { AppState } from 'src/app/models/appState';
 import { Member } from 'src/app/models/member';
 import { AdminActions } from '../admin.action-types';
 import { adminTeamMemberSelector } from '../admin.selectors';
 import { GenericPopupComponent } from '../generic-popup/generic-popup.component';
-import { UploadService } from '../upload.service';
 import { TeamFormComponent } from './team-form/team-form.component';
 
 @Component({
@@ -17,19 +19,48 @@ import { TeamFormComponent } from './team-form/team-form.component';
   styleUrls: ['./team-editor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TeamEditorComponent implements OnInit {
+export class TeamEditorComponent implements OnInit, OnDestroy {
   team$ = this.store.select(adminTeamMemberSelector)
+  showJoinBanner$ = this.store.select(showJoinBannerSelector)
+  joinBannerText$ = this.store.select(joinBannerTextSelector)
+  form = new FormGroup({
+    joinBannerText: new FormControl(''),
+    showJoinBanner: new FormControl(false),
+  })
+  destroy$ = new Subject()
   constructor(
     private store: Store<AppState>,
     private dialog: MatDialog,
-    private uploadService: UploadService
   ) { }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();    
+  }
+
   ngOnInit(): void {
+    this.store.dispatch(AppActions.fetchShowJoinBanner())
+    this.store.dispatch(AppActions.fetchJoinBannerText())
     this.team$.pipe(
       first(),
       filter(team => !team.length)
     ).subscribe(() => this.store.dispatch(AdminActions.fetchTeamMembers()))
+
+    combineLatest([this.showJoinBanner$, this.joinBannerText$]).pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(([showJoinBanner, joinBannerText]) => this.form.setValue({showJoinBanner, joinBannerText}, {emitEvent: false}))
+  }
+
+  toggleBanner() {
+    this.store.dispatch(AdminActions.toggleBanner({
+      showJoinBanner: this.form.value['showJoinBanner']
+    }))
+  }
+
+  onSaveText() {
+    this.store.dispatch(AdminActions.updateBannerText({
+      joinBannerText: this.form.value['joinBannerText']
+    }))
   }
 
   onAdd() {

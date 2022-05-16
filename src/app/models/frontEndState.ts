@@ -11,4 +11,6 @@ export interface FrontEndState  {
     about: { [id: string]: string }
     members: { [id: string]: Member },
     gallery: { [id: string]: GalleryImg },
+    showJoinBanner: boolean,
+    joinBannerText: string,
 }

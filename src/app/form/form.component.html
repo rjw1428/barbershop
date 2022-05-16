@@ -1,0 +1,75 @@
+<div class="bg">
+  <h1 class="title" style="margin-top: 1em;" #content>So you want to join our team...</h1>
+  <div
+    style="background: rgba(230, 230, 230, 0.9); max-width: 500px; padding: 1em; margin-bottom: 2em;">
+    <p *ngIf="!(isComplete | async);" class="caption">If you're looking to join a great shop with a fun and friendly team,
+      please fill out the jawn
+      below and we'll get in touch.
+    </p>
+
+    <form [formGroup]="applicationForm" *ngIf="!(isComplete | async); else complete"
+      style="display: flex; flex-direction: column; align-items:center; margin-bottom: 2em;">
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput [formControlName]="formKeys.first" name="firstName">
+          <mat-error>Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput [formControlName]="formKeys.last" name="lastName">
+          <mat-error>Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput [formControlName]="formKeys.email" name="email">
+          <mat-error>Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput [formControlName]="formKeys.phone" name="phone">
+          <mat-error>Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <label>PA Barber/Cosmotology License</label>
+      <mat-radio-group style="display: flex; gap: 2em; padding-bottom: 1em;" [formControlName]="formKeys.hasLicense">
+        <mat-radio-button [value]="'Yes'">Yes</mat-radio-button>
+        <mat-radio-button [value]="'No'">No</mat-radio-button>
+      </mat-radio-group>
+
+
+      <mat-form-field appearance="outline">
+        <mat-label>Instagram</mat-label>
+        <input matInput formControlName="insta" name="instagram">
+      </mat-form-field>
+      <div class="resume-button" *ngIf="!resume">
+        <input class="img-input" type="file" #fileDropRef (change)="onResumeSelect($event.target.files)">
+        <div>Add Resume</div>
+      </div>
+      <div class="resume-button" *ngIf="resume">
+        {{resume.name | maxLen : 25}}
+      </div>
+      <mat-progress-bar *ngIf="isSaving | async" color="primary" mode="determinate" [value]="uploadValue$ | async">
+      </mat-progress-bar>
+    </form>
+
+    <ng-template #complete>
+      <p class="caption">Thank you for applying. We will be in touch with you if we like what we see.</p>
+    </ng-template>
+
+    <div class="action-row">
+      <div class="action-row-item"  *ngIf="!(isComplete | async);">
+        <button (click)="onSubmit()" class="submit-button" [disabled]="isSaving | async">Submit</button>
+      </div>
+      <div class="action-row-item">
+        <button (click)="onBack()" class="cancel-button">Back to Home</button>
+      </div>
+    </div>
+  </div>
+</div>

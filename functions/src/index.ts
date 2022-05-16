@@ -1,9 +1,25 @@
-import * as functions from "firebase-functions";
+// import * as functions from "firebase-functions";
+// import * as admin from 'firebase-admin';
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+// admin.initializeApp();
+// const afs = admin.firestore()
+
+// export const triggerApplicationEmail = functions.firestore
+//     .document(`/applications/{id}/`)
+//     .onCreate(async (snapshot, context) => {
+//         try {
+//             const data = snapshot.data()
+//             console.log(data)
+//             afs.collection('mail').add({
+//                 template: {
+//                     name: 'newApplicant',
+//                     data
+//                 }
+//             })
+//         }
+//         catch (err) {
+//             return err
+//         }
+//     })
+
+// BarbershopDenim@gmail.com

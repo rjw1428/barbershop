@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,8 +29,43 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { appReducer } from './app.reducer';
 import { AppEffects } from './app.effects';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
+
+
+const prodImports = [
+  AngularFireAnalyticsModule
+]
+
+const devImports = [
+  StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+]
+
+const defaultImports = [
+  BrowserModule,
+  AppRoutingModule,
+  HttpClientModule,
+  MatDialogModule,
+  SharedModule,
+  BrowserAnimationsModule,
+  AngularFireModule.initializeApp(environment.firebaseConfig),
+  AngularFireAuthModule,
+  AngularFirestoreModule,
+  AngularFireStorageModule,
+  StoreModule.forRoot({ app: appReducer }, {
+    runtimeChecks: {
+      strictStateImmutability: true,
+      strictActionImmutability: true,
+      strictActionSerializability: true
+    }
+  }),
+  EffectsModule.forRoot([AppEffects]),
+]
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,26 +85,9 @@ import { AppEffects } from './app.effects';
     GalleryImageComponent,
     HomeComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    MatDialogModule,
-    BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    StoreModule.forRoot({ app: appReducer }, {
-      runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true,
-        strictActionSerializability: true
-      }
-    }),
-    EffectsModule.forRoot([AppEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-  ],
+  imports: environment.production 
+    ? [...defaultImports, ...prodImports] 
+    : [...defaultImports, ...devImports],
   providers: [ServiceService],
   bootstrap: [AppComponent]
 })

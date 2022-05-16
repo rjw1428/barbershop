@@ -59,3 +59,21 @@ export const storeGalleryImages = createAction(
 export const checkUserPersistance = createAction(
     '[App Component] Check for persistant sser',
 )
+
+export const fetchShowJoinBanner = createAction(
+    '[Team Componet] Fetch Show Banner State'
+)
+
+export const storeJoinBannerState = createAction(
+    '[App Effects] Store Show Join Banner State',
+    props<{ showJoinBanner: boolean }>()
+)
+
+export const fetchJoinBannerText = createAction(
+    '[Team Componet] Fetch Banner Text'
+)
+
+export const storeJoinBannerText = createAction(
+    '[App Effects] Store Show Join Banner Text',
+    props<{ joinBannerText: string }>()
+)

@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { filter, first } from 'rxjs/operators';
 import { AppActions } from '../app.action-types';
-import { teamMemberSelector } from '../app.selectors';
+import { joinBannerTextSelector, showJoinBannerSelector, teamMemberSelector } from '../app.selectors';
 import { AppState } from '../models/appState';
 import { Member } from '../models/member';
 import { Popup } from '../models/popup';
@@ -17,6 +17,8 @@ import { TeamPopupComponent } from './team-popup/team-popup.component';
 })
 export class TeamComponent implements OnInit, AfterViewInit {
   team$ = this.store.select(teamMemberSelector)
+  showJoinBanner$ = this.store.select(showJoinBannerSelector)
+  joinBannerText$ = this.store.select(joinBannerTextSelector)
   @ViewChild('content') content: ElementRef
   triggerAnimation = false
   constructor(
@@ -25,6 +27,9 @@ export class TeamComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
+    this.store.dispatch(AppActions.fetchShowJoinBanner())
+    this.store.dispatch(AppActions.fetchJoinBannerText())
+    
     this.team$.pipe(
       first(),
       filter(team => !team.length)

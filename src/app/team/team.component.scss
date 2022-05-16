@@ -52,6 +52,24 @@
     }
   }
 }
+.join-banner-container {
+  background-color: rgba(0,0,0,.7);
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120%;
+}
+
+.join-banner {
+  text-decoration: none; 
+  color:  var(--main-color); 
+  font-size: 1.5em;
+  font-weight: 800;
+  text-align: center;
+  display: block;
+  width: 75%;
+}
 
 @media screen and (max-width: 1200px) {
   .frame {
@@ -90,6 +108,12 @@
     .bg {
       background-attachment: scroll;
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .join-banner {
+    font-size: 1em;
   }
 }
 

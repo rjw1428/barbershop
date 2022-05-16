@@ -65,11 +65,17 @@ h2,
 h3,
 h4,
 h5,
+a,
+li,
 p {
   font-family: 'Montserrat', sans-serif;
   color: white;
 }
 
+label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+}
 
 .title {
   font-family: "Bangers";
@@ -122,4 +128,21 @@ body {
 
 .mat-list-base .mat-list-item .mat-line {
   white-space: normal !important;
+}
+
+
+.mat-radio-outer-circle {
+  border-color:  var(--main-color) !important;
+}
+
+.mat-radio-inner-circle {
+  background-color: var(--main-color) !important;
+}
+
+.mat-ripple-element {
+  background-color: var(--main-color) !important;
+}
+
+.mat-form-field-outline {
+  color: var(--main-color) !important;
 }

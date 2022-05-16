@@ -112,3 +112,13 @@ export const updateTeamMember = createAction(
     "[Team Editor Component] Update Team Members",
     props<{ member: Member }>()
 )
+
+export const toggleBanner = createAction(
+    "[Team Editor Component] Toggle Join Team Banner",
+    props<{showJoinBanner: boolean}>()
+)
+
+export const updateBannerText = createAction(
+    "[Team Editor Component] Update Join Team Banner Text",
+    props<{joinBannerText: string}>()
+)

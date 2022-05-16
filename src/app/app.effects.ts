@@ -88,6 +88,28 @@ export class AppEffects {
         )//, { dispatch: false }
     )
 
+    fetchJoinBannerState$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AppActions.fetchShowJoinBanner),
+            switchMap(() => this.db.object(`misc/showJoinBanner`).snapshotChanges()),
+            map((resp: SnapshotAction<boolean>) => {
+                const showJoinBanner = resp.payload.val()
+                return AppActions.storeJoinBannerState({ showJoinBanner })
+            })
+        )
+    )
+
+    fetchJoinBannerText$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AppActions.fetchJoinBannerText),
+            switchMap(() => this.db.object(`misc/joinBannerText`).snapshotChanges()),
+            map((resp: SnapshotAction<string>) => {
+                const joinBannerText = resp.payload.val()
+                return AppActions.storeJoinBannerText({ joinBannerText })
+            })
+        )
+    )
+
 
     constructor(
         private actions$: Actions,

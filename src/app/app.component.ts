@@ -15,7 +15,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
-    this.store.dispatch(AppActions.checkUserPersistance())
   }
 
   ngAfterViewInit() {

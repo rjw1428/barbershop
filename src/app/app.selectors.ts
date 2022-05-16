@@ -47,6 +47,16 @@ export const teamMemberSelector = createSelector(
 export const gallerySelector = createSelector(
     selectAppState,
     app => app.gallery
-        ? Object.values(app.gallery).filter(img=>img.isActive)
+        ? Object.values(app.gallery).filter(img => img.isActive)
         : []
+)
+
+export const showJoinBannerSelector = createSelector(
+    selectAppState,
+    app => app.showJoinBanner
+)
+
+export const joinBannerTextSelector = createSelector(
+    selectAppState,
+    app => app.joinBannerText
 )

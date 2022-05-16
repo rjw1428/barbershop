@@ -1,6 +1,9 @@
 {
   "rules": {
     ".read": true,
-    ".write": false
+    ".write": "auth.uid != null",
+  "about": {
+      ".indexOn": ["isActive"]
+    }
   }
 }

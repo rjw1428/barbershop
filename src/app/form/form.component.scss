@@ -1,0 +1,92 @@
+.bg {
+    // background: 
+    //     url('/assets/media/bg.jpg'),
+    //     linear-gradient(to right, grey, grey);
+    // background-blend-mode: screen;
+    background: url('/assets/media/bg2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.action-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.action-row-item {
+    text-align: center;
+    
+}
+
+button {
+    padding: 12px;
+    margin: 12px;
+    font-size: 16px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit-button {
+    background-color: rgb(41, 114, 182);
+    color: white;
+}
+
+.cancel-button {
+    background-color: white;
+    color: rgb(41, 114, 182);
+}
+
+.img-input {
+    opacity: 0;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+
+.resume-button {
+    padding: 12px;
+    margin: 12px;
+    font-size: 16px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    background: none;
+    border: 1px solid var(--main-color);
+    border-radius: 8px;
+    position: relative;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+
+}
+.mat-form-field-outline {
+    color: red !important;
+}
+
+.caption {
+    color: black; 
+    font-weight: 800;
+}
+
+@media screen and (max-width: 475px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
