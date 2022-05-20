@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { first } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { UploadService } from '../admin/upload.service';
 
 
@@ -37,14 +38,13 @@ export class FormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const validator = [Validators.required]
     const keys = Object.values(this.formKeys);
     const last = keys.length - 1;
     const form = keys
       .map((value, i) => ({
         [value]: [
           value === this.formKeys.hasLicense ? 'No' : '', // Set initial value
-          i !== last ? validator : [] // Set required fields
+          i !== last ? [Validators.required] : [Validators.required, this.notWebsiteValidator] // Set required fields
         ]
       }))
       .reduce((acc, cur) => ({ ...acc, ...cur }), {})
@@ -53,16 +53,21 @@ export class FormComponent implements OnInit {
 
   async onSubmit() {
     // <!-- ATTACH RESUME TO EMAIL (or add a download link)-->
+    console.log(this.applicationForm)
     if (this.applicationForm.valid) {
       this.isSaving.next(true)
 
-
       let uploadSuccessFileName = null
+      const instaControlValue = this.applicationForm.get(this.formKeys.insta).value as string || ''
+      const instaHandle = instaControlValue.replace(/@/, '')
+      const baseUrl = 'https://instagram.com/'
       let template = {
         name: 'newApplicant',
-        data: { ...this.applicationForm.value }
+        data: { ...this.applicationForm.value, [this.formKeys.insta]: baseUrl+instaHandle }
       }
-      const adminEmail = await this.db.database.ref('/misc/adminEmail').once('value')
+      const adminEmail = environment.production
+        ? await this.db.database.ref('/misc/adminEmail').once('value')
+        : await this.db.database.ref('/misc/testEmail').once('value')
 
       if (!!this.resume) {
         uploadSuccessFileName = await this.uploadService.pushUpload(this.resume, 'resumes', (percent) => this.uploadValue$.next(percent * .95))
@@ -91,5 +96,19 @@ export class FormComponent implements OnInit {
 
   onResumeSelect(image: FileList) {
     this.resume = image[0]
+  }
+
+  clearResume() {
+    this.resume = undefined
+  }
+
+  private notWebsiteValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const val = control.value as string || ''
+      debugger
+      return val.includes('/')
+        ? {isWebsite: true}
+        : null
+    };
   }
 }

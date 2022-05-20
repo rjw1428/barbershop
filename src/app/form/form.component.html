@@ -46,7 +46,9 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Instagram</mat-label>
+        <span matPrefix style="font-size: 28px">@ &nbsp;</span>
         <input matInput formControlName="insta" name="instagram">
+        <mat-error>Required</mat-error>
       </mat-form-field>
       <div class="resume-button" *ngIf="!resume">
         <input class="img-input" type="file" #fileDropRef (change)="onResumeSelect($event.target.files)">
@@ -54,6 +56,7 @@
       </div>
       <div class="resume-button" *ngIf="resume">
         {{resume.name | maxLen : 25}}
+        <span (click)="clearResume()" style="color: red; font-weight: bold; cursor: pointer;">X</span>
       </div>
       <mat-progress-bar *ngIf="isSaving | async" color="primary" mode="determinate" [value]="uploadValue$ | async">
       </mat-progress-bar>
