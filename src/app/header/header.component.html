@@ -42,7 +42,7 @@
   <div class="frame" [ngClass]="{'animateIn': triggerAnimation, 'tooNarrow': isTooNarrow}">
     <video [autoplay]="true" loop [muted]="true" playsinline>
       <!-- media="screen and (min-device-width: 601px)" -->
-      <source src="assets/media/denim_new_vid_1500.mp4" type="video/mp4" poster='assets/media/video_bg_2.png'>
+      <source src="assets/media/denim_new_vid_cropped.mp4" type="video/mp4" poster='assets/media/video_bg_2.png'>
     </video>
   </div>
 
@@ -52,8 +52,8 @@
     <div class="book-button" (click)="onBook()">
       <h1>BOOK NOW</h1>
     </div>
-    <h2 style="text-shadow: 1px 1px black;">1517 South Street Philadelphia, PA 19146</h2>
-    <h3 style="text-shadow: 1px 1px black;">(267) 930-3980</h3>
+    <h2 class="subtitle">1517 South Street Philadelphia, PA 19146</h2>
+    <h3 class="subtitle">(267) 930-3980</h3>
     <div style="display: flex; width: 200px; justify-content: space-around; color: white;">
       <i class="fab fa-instagram fa-3x" style="cursor: pointer;" (click)="onInsta()"></i>
       <i class="fab fa-yelp fa-3x" style="cursor: pointer;" (click)="onYelp()"></i>
