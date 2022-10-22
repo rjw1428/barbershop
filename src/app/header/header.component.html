@@ -39,25 +39,27 @@
   <div class="hidden-layer" #other (click)="onClose()"></div>
 
 
-  <div class="frame" [ngClass]="{'animateIn': triggerAnimation, 'tooNarrow': isTooNarrow}">
-    <video [autoplay]="true" loop [muted]="true" playsinline>
-      <!-- media="screen and (min-device-width: 601px)" -->
-      <source src="assets/media/denim_new_vid_cropped.mp4" type="video/mp4" poster='assets/media/video_bg_2.png'>
-    </video>
-  </div>
+  <ng-container *ngIf="isTooNarrow$ | async as isTooNarrow">
+    <div class="frame" *ngIf="triggerAnimation$ | async as animation" [ngClass]="{'tooNarrow': isTooNarrow === 'YES', 'animateIn': animation === 'YES'}">
+      <video [autoplay]="true" loop [muted]="true" playsinline>
+        <!-- media="screen and (min-device-width: 601px)" -->
+        <source src="assets/media/denim_new_vid_cropped.mp4" type="video/mp4" poster='assets/media/video_bg_2.png'>
+      </video>
 
 
-  <div class="header-content"
-    style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-    <div class="book-button" (click)="onBook()">
-      <h1>BOOK NOW</h1>
+      <div class="header-content"
+        style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <div class="book-button" (click)="onBook()">
+          <h1>BOOK NOW</h1>
+        </div>
+        <h2 class="subtitle">1517 South Street Philadelphia, PA 19146</h2>
+        <h3 class="subtitle">(267) 930-3980</h3>
+        <div style="display: flex; width: 200px; justify-content: space-around; color: white;">
+          <i class="fab fa-instagram fa-3x" style="cursor: pointer;" (click)="onInsta()"></i>
+          <i class="fab fa-yelp fa-3x" style="cursor: pointer;" (click)="onYelp()"></i>
+          <i class="far fa-envelope fa-3x" style="cursor: pointer;" (click)="onEmail()"></i>
+        </div>
+      </div>
     </div>
-    <h2 class="subtitle">1517 South Street Philadelphia, PA 19146</h2>
-    <h3 class="subtitle">(267) 930-3980</h3>
-    <div style="display: flex; width: 200px; justify-content: space-around; color: white;">
-      <i class="fab fa-instagram fa-3x" style="cursor: pointer;" (click)="onInsta()"></i>
-      <i class="fab fa-yelp fa-3x" style="cursor: pointer;" (click)="onYelp()"></i>
-      <i class="far fa-envelope fa-3x" style="cursor: pointer;" (click)="onEmail()"></i>
-    </div>
-  </div>
+  </ng-container>
 </div>

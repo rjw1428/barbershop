@@ -1,4 +1,5 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ServiceService } from '../service.service';
 
 @Component({
@@ -7,29 +8,22 @@ import { ServiceService } from '../service.service';
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
+export class HeaderComponent implements OnInit {
   @ViewChild('menu') navMenu: ElementRef
   @ViewChild('other') hiddenLayer: ElementRef
   @Output() onScroll = new EventEmitter<string>()
   @ViewChild('content') content: ElementRef
-  triggerAnimation = false
-  isTooNarrow = true
+  triggerAnimation$ = new BehaviorSubject('NO')
+  isTooNarrow$ = new BehaviorSubject('YES')
+
   constructor(
     private service: ServiceService,
-    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
+    this.isTooNarrow$.next(window.innerWidth < 960 ? 'YES' : 'NO')
+    this.shouldAnimate(window)
   }
-
-  ngAfterViewInit() {
-    this.shouldAnimate(window, true)
-    setTimeout(() => {
-      this.isTooNarrow = window.innerWidth < 960
-      this.ref.detectChanges()
-    })
-  }
-
 
   @HostListener('window:scroll', ['$event'])
   onScrollEvent(event) {
@@ -40,19 +34,13 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     const window = event.target
+    this.isTooNarrow$.next(window.innerWidth < 960 ? 'YES' : 'NO')
     this.shouldAnimate(window)
   }
 
-  shouldAnimate(window: Window, isFirst?: boolean) {
+  shouldAnimate(window: Window) {
     if (window.pageYOffset > 0 || window.innerWidth < 960)
-      setTimeout(() => {
-        this.triggerAnimation = true
-        if (isFirst) this.ref.detectChanges()
-      })
-
-    // window.pageYOffset > 0
-    //   ? setTimeout(() => this.triggerAnimation = true)
-    //   : setTimeout(() => this.triggerAnimation = false)
+        this.triggerAnimation$.next('YES')
   }
 
   onOpen() {
