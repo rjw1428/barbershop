@@ -41,12 +41,16 @@
 
   <ng-container *ngIf="isTooNarrow$ | async as isTooNarrow">
     <div class="frame" *ngIf="triggerAnimation$ | async as animation" [ngClass]="{'tooNarrow': isTooNarrow === 'YES', 'animateIn': animation === 'YES'}">
-      <video [autoplay]="true" loop [muted]="true" playsinline>
-        <!-- media="screen and (min-device-width: 601px)" -->
-        <source src="assets/media/denim_new_vid_cropped.mp4" type="video/mp4" poster='assets/media/video_bg_2.png'>
-      </video>
-
-
+      <ng-container *ngIf="isMobile$ | async as isMobile">
+        <video [autoplay]="true" loop [muted]="true" playsinline *ngIf="isMobile === 'YES'; else horz">
+          <source src="assets/media/denim_new_vid_vertical.mp4" type="video/mp4" poster='assets/media/video_bg_2.png'>
+        </video>
+        <ng-template #horz>
+          <video [autoplay]="true" loop [muted]="true" playsinline>
+            <source src="assets/media/denim_new_vid_horizontal.mp4" type="video/mp4" poster='assets/media/video_bg_2.png'>
+          </video>
+        </ng-template>
+      </ng-container>
       <div class="header-content"
         style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
         <div class="book-button" (click)="onBook()">

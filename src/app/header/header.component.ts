@@ -15,13 +15,14 @@ export class HeaderComponent implements OnInit {
   @ViewChild('content') content: ElementRef
   triggerAnimation$ = new BehaviorSubject('NO')
   isTooNarrow$ = new BehaviorSubject('YES')
-
+  isMobile$ = new BehaviorSubject('YES')
   constructor(
     private service: ServiceService,
   ) { }
 
   ngOnInit(): void {
     this.isTooNarrow$.next(window.innerWidth < 960 ? 'YES' : 'NO')
+    this.isMobile$.next(window.innerWidth < 600 ? 'YES' : 'NO')
     this.shouldAnimate(window)
   }
 
@@ -35,6 +36,7 @@ export class HeaderComponent implements OnInit {
   onResize(event) {
     const window = event.target
     this.isTooNarrow$.next(window.innerWidth < 960 ? 'YES' : 'NO')
+    this.isMobile$.next(window.innerWidth < 600 ? 'YES' : 'NO')
     this.shouldAnimate(window)
   }
 
