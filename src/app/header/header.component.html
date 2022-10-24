@@ -40,30 +40,38 @@
 
 
   <ng-container *ngIf="isTooNarrow$ | async as isTooNarrow">
-    <div class="frame" *ngIf="triggerAnimation$ | async as animation" [ngClass]="{'tooNarrow': isTooNarrow === 'YES', 'animateIn': animation === 'YES'}">
-      <ng-container *ngIf="isMobile$ | async as isMobile">
-        <video [autoplay]="true" loop [muted]="true" playsinline *ngIf="isMobile === 'YES'; else horz">
-          <source src="assets/media/denim_new_vid_vertical.mp4" type="video/mp4" poster='assets/media/video_bg_2.png'>
-        </video>
-        <ng-template #horz>
-          <video [autoplay]="true" loop [muted]="true" playsinline>
-            <source src="assets/media/denim_new_vid_horizontal.mp4" type="video/mp4" poster='assets/media/video_bg_2.png'>
+    <ng-container *ngIf="isMobile$ | async as isMobile">
+      <ng-container *ngIf="showMargins$ | async as showMargins">
+        <div class="frame" *ngIf="triggerAnimation$ | async as animation" 
+          [ngClass]="{'tooNarrow': isTooNarrow === 'YES', 'animateIn': animation === 'YES'}"
+          [ngStyle]="{'margin': showMargins === 'YES' ? '0 20px' : '0'}">
+          <video [autoplay]="true" loop [muted]="true" playsinline *ngIf="isMobile === 'YES'; else horz">
+            <source src="assets/media/denim_new_vid_vertical.mp4" type="video/mp4" poster='assets/media/video_bg_2.png'>
           </video>
-        </ng-template>
+          <ng-template #horz>
+            <video [autoplay]="true" loop [muted]="true" playsinline>
+              <source src="assets/media/denim_new_vid_horizontal.mp4" type="video/mp4" poster='assets/media/video_bg_2.png'>
+            </video>
+          </ng-template>
+
+          <div class="header-content">
+            <div class="more-content" [ngStyle]="{'bottom': isMobile === 'YES' ? '100px' : '20%'}">
+              <div class="book-button" (click)="onBook()">
+                <h1>BOOK NOW</h1>
+              </div>
+              <div style="text-align: center">
+                <h2 class="subtitle">1517 South Street Philadelphia, PA 19146</h2>
+                <h3 class="subtitle">(267) 930-3980</h3>
+              </div>
+              <div style="display: flex; width: 200px; justify-content: space-around; color: white;">
+                <i class="fab fa-instagram fa-3x" style="cursor: pointer;" (click)="onInsta()"></i>
+                <i class="fab fa-yelp fa-3x" style="cursor: pointer;" (click)="onYelp()"></i>
+                <i class="far fa-envelope fa-3x" style="cursor: pointer;" (click)="onEmail()"></i>
+              </div>
+            </div>
+          </div>
+        </div>
       </ng-container>
-      <div class="header-content"
-        style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-        <div class="book-button" (click)="onBook()">
-          <h1>BOOK NOW</h1>
-        </div>
-        <h2 class="subtitle">1517 South Street Philadelphia, PA 19146</h2>
-        <h3 class="subtitle">(267) 930-3980</h3>
-        <div style="display: flex; width: 200px; justify-content: space-around; color: white;">
-          <i class="fab fa-instagram fa-3x" style="cursor: pointer;" (click)="onInsta()"></i>
-          <i class="fab fa-yelp fa-3x" style="cursor: pointer;" (click)="onYelp()"></i>
-          <i class="far fa-envelope fa-3x" style="cursor: pointer;" (click)="onEmail()"></i>
-        </div>
-      </div>
-    </div>
+    </ng-container>
   </ng-container>
 </div>
