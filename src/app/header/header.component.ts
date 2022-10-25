@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { BehaviorSubject, combineLatest } from 'rxjs';
-import { map, takeWhile } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { ServiceService } from '../service.service';
 
 @Component({
@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
       return false
     }),
     map(shouldShow => shouldShow ? 'YES' : 'NO'),
-    // takeWhile(val => val === 'YES')
   )
   constructor(
     private service: ServiceService,
@@ -37,8 +36,6 @@ export class HeaderComponent implements OnInit {
     this.isTooNarrow$.next(window.innerWidth < 960 ? 'YES' : 'NO')
     this.isMobile$.next(window.innerWidth < 600 ? 'YES' : 'NO')
     this.shouldAnimate(window)
-
-    this.showMargins$.subscribe(console.log)
   }
 
   @HostListener('window:scroll', ['$event'])
