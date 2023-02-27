@@ -1,6 +1,7 @@
-import {writeFile} from 'fs';
+import { mkdir, writeFile } from 'fs';
 
-const targetPath = './src/environments/environment.prod.ts';
+const targetPath = './src/environments/'
+const targetFile = 'environment.prod.ts';
 
 const envConfigFile = `export const environment = {
    production: true,
@@ -13,12 +14,18 @@ const envConfigFile = `export const environment = {
         messagingSenderId: '${process.env.FIREBASE_MESSAGE_SENDER_ID}',
         appId: '${process.env.FIREBASE_APP_ID}',
         measurementId: '${process.env.FIREBASE_MEASUREMENT_ID}',
-    },
+    }
 };
 `;
 
-writeFile(targetPath, envConfigFile, 'utf8', (err) => {
+mkdir(targetPath, (err) => {
   if (err) {
     return console.log(err);
   }
-});
+  writeFile(targetPath+targetFile, envConfigFile, 'utf8', (err) => {
+    if (err) {
+      return console.log(err);
+    }
+    console.log(`Environment file written to ${targetPath}${targetFile}`)
+  });
+})
