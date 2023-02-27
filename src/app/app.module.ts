@@ -32,8 +32,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { appReducer } from './app.reducer';
 import { AppEffects } from './app.effects';
-import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { ProductPopupComponent } from './products/product-popup/product-popup.component';
 
 
 const prodImports = [
@@ -80,6 +80,7 @@ const defaultImports = [
     NavButtonComponent,
     TeamMemberComponent,
     ProductComponent,
+    ProductPopupComponent,
     ContactComponent,
     TeamPopupComponent,
     GalleryImageComponent,

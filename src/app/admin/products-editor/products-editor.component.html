@@ -4,10 +4,11 @@
       <mat-card-title>Services Editor</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <mat-list role="list">
+      <mat-list role="list" style="max-width: 600px">
         <mat-list-item *ngFor="let product of products$ | async; trackBy: identify">
           <h3 style="color: black; font-weight: 700;" mat-line>{{product.name}}</h3>
           <div mat-line>Price: {{product.price | currency}}</div>
+          <div mat-line *ngIf="product.description" style="font-style: italic;">{{product.description}}</div>
           <button mat-icon-button color="primary"  (click)="onEdit(product)">
             <mat-icon>mode_edit</mat-icon>
           </button>

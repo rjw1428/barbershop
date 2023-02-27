@@ -12,6 +12,10 @@
         <input name="price" type="number" matInput formControlName="price">
         <mat-error *ngIf="productForm.invalid">Must include a price</mat-error>
       </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea name="description" matInput formControlName="description"></textarea>
+      </mat-form-field>
     </form>
   </mat-dialog-content>
   <mat-dialog-actions style="display: flex; justify-content: center;">
