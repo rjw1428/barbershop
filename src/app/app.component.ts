@@ -1,8 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppActions } from './app.action-types';
+import { environment } from 'src/environments/environment';
 import { AppState } from './models/appState';
-import { ServiceService } from './service.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +14,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
+
   }
 
   ngAfterViewInit() {
