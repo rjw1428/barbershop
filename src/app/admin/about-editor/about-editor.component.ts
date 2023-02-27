@@ -17,7 +17,7 @@ import { AboutFormComponent } from './about-form/about-form.component';
   styleUrls: ['./about-editor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AboutEditorComponent implements OnInit {
+export class AboutEditorComponent implements OnInit, OnDestroy {
   about$ = this.store.select(allAboutSelector)
   selectedAbout$: Observable<About>
   versionSelector: FormControl
@@ -26,6 +26,10 @@ export class AboutEditorComponent implements OnInit {
     private dialog: MatDialog,
   ) { }
 
+  ngOnDestroy(): void {
+    console.log("DESTROYED")
+  }
+  
   ngOnInit(): void {
     this.versionSelector = new FormControl('')
 
