@@ -3,6 +3,7 @@
   "version": "1.2.0",
   "scripts": {
     "ng": "ng",
+    "config": "node ./config.index.mjs",
     "start": "ng serve",
     "build": "ng build --configuration production",
     "test": "ng test",
