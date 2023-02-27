@@ -10,8 +10,6 @@ import { ServiceService } from '../service.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
-  @ViewChild('menu') navMenu: ElementRef
-  @ViewChild('other') hiddenLayer: ElementRef
   @Output() onScroll = new EventEmitter<string>()
   @ViewChild('content') content: ElementRef
   triggerAnimation$ = new BehaviorSubject('NO')
@@ -57,18 +55,6 @@ export class HeaderComponent implements OnInit {
         this.triggerAnimation$.next('YES')
   }
 
-  onOpen() {
-    this.navMenu.nativeElement.style.width = "500px";
-    this.hiddenLayer.nativeElement.style.zIndex = "500"
-    this.hiddenLayer.nativeElement.style.backgroundColor = "rgba(0,0,0,.5)"
-  }
-
-  onClose() {
-    this.navMenu.nativeElement.style.width = 0;
-    this.hiddenLayer.nativeElement.style.zIndex = 0
-    this.hiddenLayer.nativeElement.style.backgroundColor = "rgba(0,0,0,0)"
-  }
-
   onInsta() {
     this.service.insta()
   }
@@ -86,7 +72,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onNavigate(elementId: string) {
-    this.onClose()
     this.onScroll.emit(elementId)
   }
 }

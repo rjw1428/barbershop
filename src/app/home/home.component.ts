@@ -14,10 +14,14 @@ export class HomeComponent implements OnInit {
   @ViewChild('hours', { static: false }) hoursEl: ElementRef
   @ViewChild('about', { static: false }) aboutEl: ElementRef
   @ViewChild('location', { static: false }) locationEl: ElementRef
+
+  @ViewChild('menu') navMenu: ElementRef
+  @ViewChild('other') hiddenLayer: ElementRef
   constructor() { }
 
   ngOnInit(): void {
   }
+
   triggerScroll(elementName: string) {
     let element: ElementRef
     switch (elementName) {
@@ -44,5 +48,22 @@ export class HomeComponent implements OnInit {
         break;
     }
     element.nativeElement.scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
+  }
+
+  onOpen() {
+    this.navMenu.nativeElement.style.width = "500px";
+    this.hiddenLayer.nativeElement.style.zIndex = "500"
+    this.hiddenLayer.nativeElement.style.backgroundColor = "rgba(0,0,0,.5)"
+  }
+
+  onClose() {
+    this.navMenu.nativeElement.style.width = 0;
+    this.hiddenLayer.nativeElement.style.zIndex = 0
+    this.hiddenLayer.nativeElement.style.backgroundColor = "rgba(0,0,0,0)"
+  }
+
+  onNavigate(elementId: string) {
+    this.onClose()
+    this.triggerScroll(elementId)
   }
 }
