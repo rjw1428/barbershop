@@ -1,9 +1,12 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { AppActions } from '../app.action-types';
 import { productsSelector } from '../app.selectors';
 import { AppState } from '../models/appState';
+import { Popup } from '../models/popup';
 import { Product } from '../models/product';
+import { ProductPopupComponent } from './product-popup/product-popup.component';
 
 @Component({
   selector: 'app-products',
@@ -19,7 +22,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   constructor(
     private store: Store<AppState>,
     private ref: ChangeDetectorRef,
-    private renderer: Renderer2
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +57,12 @@ export class ProductsComponent implements OnInit, AfterViewInit {
         this.triggerAnimation = true
         if (isFirst) this.ref.detectChanges()
       })
+  }
+
+  moreInfo(product: Product) {
+    this.dialog.open(ProductPopupComponent, {
+      data: { title: product.name, subtitle: product.description } as Popup
+    })
   }
 
   identify(index: number, item: Product) {
