@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from 'fs';
 
 const targetPath = './src/environments/'
+const baseFile = 'environment.ts';
 const targetFile = 'environment.prod.ts';
 
 const envConfigFile = `export const environment = {
@@ -22,10 +23,19 @@ mkdir(targetPath, (err) => {
   if (err) {
     return console.log(err);
   }
+  writeFile(targetPath+baseFile, envConfigFile, 'utf8', (err) => {
+    if (err) {
+      return console.log(err);
+    }
+    console.log(`Environment file written to ${targetPath}${baseFile}`)
+  });
+
   writeFile(targetPath+targetFile, envConfigFile, 'utf8', (err) => {
     if (err) {
       return console.log(err);
     }
     console.log(`Environment file written to ${targetPath}${targetFile}`)
   });
+
+
 })
